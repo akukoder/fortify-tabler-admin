@@ -95,6 +95,8 @@ class InstallCommand extends Command
     {
         File::delete(config_path('fortify.php'));
         File::copy(self::STUB_DIR.'/config/fortify.stub', config_path('fortify.php'));
+
+        File::copy(self::STUB_DIR.'/config/avatar.stub', config_path('avatar.php'));
     }
 
     protected function updateRoutes()
