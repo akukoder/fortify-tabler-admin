@@ -31,9 +31,9 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
                 self::STUB_DIR.'/resources/views' => base_path('resources/views'),
             ], 'tabler-resources');
 
-            $this->publishes([
-                self::STUB_DIR.'/resources/lang' => base_path('resources/lang'),
-            ], 'tabler-language');
+//            $this->publishes([
+//                self::STUB_DIR.'/resources/lang' => base_path('resources/lang'),
+//            ], 'tabler-language');
 
             // Update public files
             $this->publishes([

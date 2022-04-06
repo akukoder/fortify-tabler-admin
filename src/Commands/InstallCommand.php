@@ -73,6 +73,9 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-language', '--force' => true]);
 
         File::deleteDirectory(resource_path('css'));
+
+        File::delete(resource_path('lang/en/auth.php'));
+        File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
     }
 
     protected function updateProvider()
