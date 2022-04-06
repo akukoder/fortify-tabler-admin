@@ -19,7 +19,9 @@
       }
     ],
     "require": {
-      "illuminate/support": "^8.0",
+      "illuminate/console": "^8.0|^9.0",
+      "illuminate/database": "^8.0|^9.0",
+      "illuminate/support": "^8.0|^9.0",
       "zacksmash/fortify-ui": "^1.0"
     },
     "require-dev": {
@@ -52,4 +54,3 @@
     "minimum-stability": "dev",
     "prefer-stable": true
   }
-  
