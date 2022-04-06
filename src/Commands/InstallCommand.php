@@ -12,44 +12,52 @@ class InstallCommand extends Command
 
     public $description = 'Install FortifySoftUi preset, with views and resources.';
 
+    const STUB_DIR = '../../stubs';
+
     public function handle()
     {
-        $this->callSilent('fortify:ui', ['--skip-provider' => true]);
+        try {
+            $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
-        $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');
+            $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');
 
-        $this->publishAssets();
-        $this->updateProvider();
-        $this->updateConfig();
-        $this->updateRoutes();
-        $this->addControllers();
-        $this->addActions();
-        $this->updateUserModel();
-        $this->updateSessionDriver();
+            $this->publishAssets();
+            $this->updateProvider();
+            $this->updateConfig();
+            $this->updateRoutes();
+            $this->addControllers();
+            $this->addActions();
+            $this->addViews();
+            $this->updateUserModel();
+            $this->updateSessionDriver();
 
-        $this->callSilent('storage:link');
-        $this->callSilent('migrate');
-        $this->callSilent('optimize:clear');
+            $this->callSilent('storage:link');
+            $this->callSilent('migrate');
+            $this->callSilent('optimize:clear');
 
-        $this->line('');
-        $this->comment('Fortify Tabler Admin installation completed!');
+            $this->line('');
+            $this->comment('Fortify Tabler Admin installation completed!');
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            $this->error('Database not exists! Please create database for your application before proceeding.');
+        }
     }
 
     protected function addControllers()
     {
-        File::copy(__DIR__.'/../../stubs/app/Http/Controllers/ProfileController.stub', app_path('Http/Controllers/ProfileController.php'));
-        File::copy(__DIR__.'/../../stubs/app/Http/Controllers/UsersController.stub', app_path('Http/Controllers/UsersController.php'));
+        File::copy(self::STUB_DIR.'/app/Http/Controllers/ProfileController.stub', app_path('Http/Controllers/ProfileController.php'));
+        File::copy(self::STUB_DIR.'/app/Http/Controllers/UsersController.stub', app_path('Http/Controllers/UsersController.php'));
     }
 
     protected function addActions()
     {
-        File::copy(__DIR__.'/../../stubs/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
     }
 
-    protected function copyView()
+    protected function addViews()
     {
-        File::copy(__DIR__.'/../../stubs/app/View/Layouts/Auth.stub', app_path('View/Auth.php'));
-        File::copy(__DIR__.'/../../stubs/app/View/Layouts/Dashboard.stub', app_path('View/Dashboard.php'));
+        File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Auth.stub', app_path('View/Components/Auth.php'));
+        File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Dashboard.stub', app_path('View/Components/Dashboard.php'));
     }
 
     protected function publishAssets()
@@ -63,22 +71,22 @@ class InstallCommand extends Command
     protected function updateProvider()
     {
         File::delete(app_path('Providers/FortifyServiceProvider.php'));
-        File::copy(__DIR__.'/../../stubs/provider/FortifyServiceProvider.stub', app_path('Providers/FortifyServiceProvider.php'));
+        File::copy(self::STUB_DIR.'/app/Providers/FortifyServiceProvider.stub', app_path('Providers/FortifyServiceProvider.php'));
 
         File::delete(app_path('Providers/AppServiceProvider.php'));
-        File::copy(__DIR__.'/../../stubs/provider/AppServiceProvider.stub', app_path('Providers/AppServiceProvider.php'));
+        File::copy(self::STUB_DIR.'/app/Providers/AppServiceProvider.stub', app_path('Providers/AppServiceProvider.php'));
     }
 
     protected function updateConfig()
     {
         File::delete(config_path('fortify.php'));
-        File::copy(__DIR__.'/../../stubs/config/fortify.stub', config_path('fortify.php'));
+        File::copy(self::STUB_DIR.'/config/fortify.stub', config_path('fortify.php'));
     }
 
     protected function updateRoutes()
     {
         File::delete(base_path('routes/web.php'));
-        File::copy(__DIR__.'/../../stubs/routes/web.stub', base_path('routes/web.php'));
+        File::copy(self::STUB_DIR.'/routes/web.stub', base_path('routes/web.php'));
     }
 
     protected function updateSessionDriver()
