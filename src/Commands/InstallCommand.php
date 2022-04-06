@@ -12,7 +12,7 @@ class InstallCommand extends Command
 
     public $description = 'Install FortifySoftUi preset, with views and resources.';
 
-    const STUB_DIR = '../../stubs';
+    const STUB_DIR = __DIR__.'/../../stubs';
 
     public function handle()
     {
@@ -56,6 +56,10 @@ class InstallCommand extends Command
 
     protected function addViews()
     {
+        if (! File::isDirectory(app_path('View'))) {
+            File::makeDirectory(app_path('View/Components/Layouts'));
+        }
+        
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Auth.stub', app_path('View/Components/Auth.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Dashboard.stub', app_path('View/Components/Dashboard.php'));
     }
