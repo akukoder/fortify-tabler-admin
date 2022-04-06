@@ -16,7 +16,7 @@
 
                     @if(Route::has('password.request'))
                     <span class="form-label-description">
-                        <a href="{{ route('password.request') }}">{{ __('auth.placeholder.forgotpassword') }}</a>
+                        <a href="{{ route('password.request') }}">{{ __('auth.placeholder.forgot_password') }}</a>
                     </span>
                     @endif
                 </label>
@@ -42,18 +42,18 @@
             {{-- <div class="mb-2">
                 <label class="form-check">
                     <input type="checkbox" name="remember" class="form-check-input" tabindex="3" />
-                    <span class="form-check-label">{{ __('auth.rememberme') }}</span>
+                    <span class="form-check-label">{{ __('auth.remember_me') }}</span>
                 </label>
             </div> --}}
             <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100" tabindex="4">{{ __('auth.loginbutton') }}</button>
+                <button type="submit" class="btn btn-primary w-100" tabindex="4">{{ __('auth.login_button') }}</button>
             </div>
         </div>
     </form>
 
     @if(Route::has('register'))
         <div class="text-center text-muted mt-3">
-            {{ __('auth.placeholder.donthaveaccount') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.createaccount') }}</a>
+            {{ __('auth.placeholder.dont_have_account') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.create_account') }}</a>
         </div>
     @endif
 </x-layouts.auth>

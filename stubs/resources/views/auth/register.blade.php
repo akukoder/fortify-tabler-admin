@@ -33,20 +33,20 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">{{ __('auth.fields.passwordconfirmation') }}</label>
+                <label class="form-label">{{ __('auth.fields.password_confirmation') }}</label>
                 <input type="password" name="password_confirmation" required autocomplete="new-password"
-                    class="form-control" placeholder="{{ __('auth.placeholder.passwordconfirmation') }}" tabindex="4">
+                    class="form-control" placeholder="{{ __('auth.placeholder.password_confirmation') }}" tabindex="4">
             </div>
 
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary btn-block"
-                    tabindex="5">{{ __('auth.registerbutton') }}</button>
+                    tabindex="5">{{ __('auth.register_button') }}</button>
             </div>
 
         </div>
 
     </form>
     <div class="text-center text-muted mt-3">
-        {{ __('auth.placeholder.alreadyhaveaccount') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.login') }}</a>
+        {{ __('auth.placeholder.already_have_account') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.login') }}</a>
     </div>
 </x-layouts.auth>

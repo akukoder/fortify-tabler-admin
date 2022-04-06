@@ -10,12 +10,16 @@ class InstallCommand extends Command
 {
     public $signature = 'tabler:install';
 
-    public $description = 'Install FortifySoftUi preset, with views and resources.';
+    public $description = 'Install Fortify Tabler Admin preset, with views, resources and some other features.';
 
     const STUB_DIR = __DIR__.'/../../stubs';
 
     public function handle()
     {
+        if (! $this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
+            $this->info('Bye...');
+        }
+
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
