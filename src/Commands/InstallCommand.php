@@ -21,6 +21,7 @@ class InstallCommand extends Command
         }
 
         try {
+            $this->call('tabler:create-db');
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
             $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');

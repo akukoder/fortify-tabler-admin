@@ -14,18 +14,25 @@ class CreateDatabase extends Command
     public function handle()
     {
         try {
-            $dbname = $this->argument('dbname');
-            $connection = $this->hasArgument('connection') && $this->argument('connection') ? $this->argument('connection'): DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
-   
+            $connection = env('DB_DATABASE', false);
+            $database = env('DB_CONNECTION', 'mysql');
+
+            if (! $database) {
+                $this->info('Skipping creation of database as env(DB_DATABASE) is empty');
+                return;
+            }
+
+//            $connection = $this->hasArgument('connection') && $this->argument('connection') ? $this->argument('connection'): DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
+
             $hasDb = DB::connection($connection)
-                ->select("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = "."'".$dbname."'");
-   
+                ->select("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME ='{$database}'");
+
             if (empty($hasDb)) {
-                DB::connection($connection)->select('CREATE DATABASE '. $dbname);
-                $this->info("Database '$dbname' created for '$connection' connection");
+                DB::connection($connection)->select('CREATE DATABASE '. $database);
+                $this->info("Database '$database' created for '{$connection}' connection");
             }
             else {
-                $this->info("Database $dbname already exists for $connection connection");
+                $this->info("Database $database already exists for '{$connection}' connection");
             }
         }
         catch (\Exception $e){
