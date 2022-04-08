@@ -21,7 +21,6 @@ class InstallCommand extends Command
         }
 
         try {
-//            $this->call('tabler:create-db');
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
             $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');
@@ -77,8 +76,6 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-public', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-language', '--force' => true]);
 
-//        File::deleteDirectory(resource_path('css'));
-
         File::delete(resource_path('lang/en/auth.php'));
 
         File::delete(resource_path('js/app.js'));
@@ -92,6 +89,7 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
         File::copy(self::STUB_DIR.'/package.stub', base_path('package.json'));
         File::copy(self::STUB_DIR.'/resources/js/app.stub', resource_path('js/app.js'));
+        File::copy(self::STUB_DIR.'/mix-manifest.stub', public_path('mix-manifest.json'));
 
         if (! File::isDirectory(resource_path('sass'))) {
             File::makeDirectory(resource_path('sass'));
@@ -114,7 +112,6 @@ class InstallCommand extends Command
     {
         File::delete(config_path('fortify.php'));
         File::copy(self::STUB_DIR.'/config/fortify.stub', config_path('fortify.php'));
-
         File::copy(self::STUB_DIR.'/config/avatar.stub', config_path('avatar.php'));
     }
 
@@ -134,6 +131,12 @@ class InstallCommand extends Command
                 "SESSION_DRIVER=file".PHP_EOL,
                 "SESSION_DRIVER=database".PHP_EOL,
                 base_path('.env')
+            );
+
+            $this->replaceInFile(
+                "SESSION_DRIVER=file".PHP_EOL,
+                "SESSION_DRIVER=database".PHP_EOL,
+                base_path('.env.example')
             );
         }
     }

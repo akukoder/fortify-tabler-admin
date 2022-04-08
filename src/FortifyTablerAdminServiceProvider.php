@@ -30,7 +30,7 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
             $this->publishes([
                 self::STUB_DIR.'/resources/views' => base_path('resources/views'),
             ], 'tabler-resources');
-            
+
             // Update public files
             $this->publishes([
                 self::STUB_DIR.'/public/css' => base_path('public/css'),
