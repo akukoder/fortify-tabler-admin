@@ -21,7 +21,7 @@ class InstallCommand extends Command
         }
 
         try {
-            $this->call('tabler:create-db');
+//            $this->call('tabler:create-db');
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
             $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');
@@ -77,10 +77,28 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-public', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-language', '--force' => true]);
 
-        File::deleteDirectory(resource_path('css'));
+//        File::deleteDirectory(resource_path('css'));
 
         File::delete(resource_path('lang/en/auth.php'));
+
+        File::delete(resource_path('js/app.js'));
+        File::delete(base_path('webpack.mix.js'));
+        File::delete(base_path('package.json'));
+        File::delete(base_path('package-lock.json'));
+
         File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
+
+        File::copyDirectory(self::STUB_DIR.'/resources/tabler', resource_path('tabler'));
+        File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
+        File::copy(self::STUB_DIR.'/package.stub', base_path('package.json'));
+        File::copy(self::STUB_DIR.'/resources/js/app.stub', resource_path('js/app.js'));
+
+        if (! File::isDirectory(resource_path('sass'))) {
+            File::makeDirectory(resource_path('sass'));
+        }
+
+        File::copy(self::STUB_DIR.'/resources/sass/app.stub', resource_path('sass/app.scss'));
+
     }
 
     protected function updateProvider()

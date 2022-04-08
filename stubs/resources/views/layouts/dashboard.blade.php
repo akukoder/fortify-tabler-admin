@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-        <link href="{{ asset('tabler/css/tabler.min.css') }}" rel="stylesheet" />
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
 
         {{ $css ?? '' }}
 
@@ -76,9 +76,7 @@
             </div>
 
         </div>
-        <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('dist/libs/jquery/dist/jquery.slim.min.js') }}"></script>
-        <script src="{{ asset('tabler/js/tabler.min.js') }}"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         {{ $js ?? '' }}
     </body>
 </html>

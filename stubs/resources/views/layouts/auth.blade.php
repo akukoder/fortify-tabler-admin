@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-        <link href="{{ asset('tabler/css/tabler.min.css') }}?{{ time() }}" rel="stylesheet" />
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
 
         <!-- SEO -->
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -24,9 +24,7 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha256-cMPWkL3FzjuaFSfEYESYmjF25hCIL6mfRSPnW8OVvM4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-slim@3.0.0/dist/jquery.slim.min.js" integrity="sha256-Rf4BadfyCtsvHmO89BUZcbYvNNvZvOT08ALfEzvCsD0=" crossorigin="anonymous"></script>
-        <script src="{{ asset('tabler/js/tabler.min.js') }}?{{ time() }}"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         {{ $js ?? '' }}
     </body>
 </html>

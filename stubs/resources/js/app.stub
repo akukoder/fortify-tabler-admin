@@ -1,0 +1,7 @@
+require('./bootstrap');
+
+require('@popperjs/core')
+require('jquery-slim/dist/jquery.slim.min')
+require('bootstrap/dist/js/bootstrap.min')
+require('../tabler/js/tabler.min.js')
+

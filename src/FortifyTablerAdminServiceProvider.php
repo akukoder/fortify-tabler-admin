@@ -38,8 +38,8 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
 
             // Update public files
             $this->publishes([
-                self::STUB_DIR.'/public/tabler' => base_path('public/tabler'),
-                self::STUB_DIR.'/public/dist' => base_path('public/dist'),
+//                self::STUB_DIR.'/public/tabler' => base_path('public/tabler'),
+//                self::STUB_DIR.'/public/dist' => base_path('public/dist'),
                 self::STUB_DIR.'/public/static' => base_path('public/static'),
             ], 'tabler-public');
 
