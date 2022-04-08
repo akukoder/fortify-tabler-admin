@@ -1,1 +1,2 @@
 @import "../tabler/css/tabler.min.css";
+@import "../tabler/css/tabler-vendors.min.css";
