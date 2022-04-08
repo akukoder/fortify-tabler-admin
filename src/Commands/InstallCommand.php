@@ -89,7 +89,7 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
         File::copy(self::STUB_DIR.'/package.stub', base_path('package.json'));
         File::copy(self::STUB_DIR.'/resources/js/app.stub', resource_path('js/app.js'));
-        File::copy(self::STUB_DIR.'/mix-manifest.stub', public_path('mix-manifest.json'));
+        File::copy(self::STUB_DIR.'/public/mix-manifest.stub', public_path('mix-manifest.json'));
 
         if (! File::isDirectory(resource_path('sass'))) {
             File::makeDirectory(resource_path('sass'));
