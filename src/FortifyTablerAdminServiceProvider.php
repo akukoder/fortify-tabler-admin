@@ -2,7 +2,6 @@
 
 namespace Akukoder\FortifyTablerAdmin;
 
-use Akukoder\FortifyTablerAdmin\Commands\CreateDatabase;
 use Akukoder\FortifyTablerAdmin\Commands\InstallCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -44,7 +43,6 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
             ], 'tabler-public');
 
             $this->commands([
-                CreateDatabase::class,
                 InstallCommand::class,
             ]);
         }
