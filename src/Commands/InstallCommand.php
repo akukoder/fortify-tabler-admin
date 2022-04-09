@@ -87,8 +87,8 @@ class InstallCommand extends Command
         File::delete(app_path('Actions/Fortify/ChangeUserPassword.php'));
         File::copy(self::STUB_DIR.'/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
 
-        File::delete(app_path('Actions/Fortify/UpdateUserrofileInformation.php'));
-        File::copy(self::STUB_DIR.'/app/Actions/Fortify/UpdateUserrofileInformation.stub', app_path('Actions/Fortify/UpdateUserrofileInformation.php'));
+        File::delete(app_path('Actions/Fortify/UpdateUserProfileInformation.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/Fortify/UpdateUserProfileInformation.stub', app_path('Actions/Fortify/UpdateUserProfileInformation.php'));
 
         File::copy(self::STUB_DIR.'/app/Actions/UserAvatar.stub', app_path('Actions/UserAvatar.php'));
         File::copy(self::STUB_DIR.'/app/Actions/UserSettings.stub', app_path('Actions/UserSettings.php'));
@@ -130,6 +130,7 @@ class InstallCommand extends Command
 
         File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
         File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', resource_path('lang/en/profile.php'));
+        File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', resource_path('lang/en/users.php'));
 
         File::copyDirectory(self::STUB_DIR.'/resources/tabler', resource_path('tabler'));
         File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
