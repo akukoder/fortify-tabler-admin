@@ -27,6 +27,12 @@ class LoadUserSettings
      */
     public function handle(Login $event)
     {
-        (new UserSettings)->set('user_theme', 'theme-light');
+        settings()->setExtraColumns([
+            'user_id' => auth()->user()->id
+        ]);
+
+        if (! settings()->has('user_theme')) {
+            (new UserSettings)->set('user_theme', 'theme-light');
+        }
     }
 }
