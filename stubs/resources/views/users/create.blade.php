@@ -1,4 +1,4 @@
-<x-layouts.horizontal>
+<x-layouts.overlap>
 
     <x-container>
         <div class="col">
@@ -149,4 +149,4 @@
             </form>
         </div>
     </x-container>
-</x-layouts.horizontal>
+</x-layouts.overlap>

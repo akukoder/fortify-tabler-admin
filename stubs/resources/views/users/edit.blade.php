@@ -1,4 +1,4 @@
-<x-layouts.horizontal>
+<x-layouts.overlap>
 
     <x-container>
         <x-errors />
@@ -169,4 +169,4 @@
             </form>
         </div>
     </x-container>
-</x-layouts.horizontal>
+</x-layouts.overlap>

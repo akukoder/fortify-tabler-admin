@@ -1,4 +1,4 @@
-<x-layouts.horizontal>
+<x-layouts.overlap>
     <x-slot name="page_pretitle">
         {{ __('profile.header.page_pretitle') }}
     </x-slot>
@@ -46,4 +46,4 @@
             </div>
         </div>
     </x-container>
-</x-layouts.horizontal>
+</x-layouts.overlap>

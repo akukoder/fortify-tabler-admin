@@ -1,4 +1,4 @@
-<x-layouts.horizontal>
+<x-layouts.overlap>
     <x-slot name="page_pretitle">
         {{ __('users.header.page_pretitle') }}
     </x-slot>
@@ -151,4 +151,4 @@
             })
         </script>
     </x-slot>
-</x-layouts.horizontal>
+</x-layouts.overlap>

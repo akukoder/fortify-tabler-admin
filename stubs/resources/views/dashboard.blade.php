@@ -1,4 +1,4 @@
-<x-layouts.horizontal>
+<x-layouts.overlap>
     <x-container>
         <div class="col">
             <x-status />
@@ -8,4 +8,4 @@
 
         </div>
     </x-container>
-</x-layouts.horizontal>
+</x-layouts.overlap>
