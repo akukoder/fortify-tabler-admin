@@ -14,8 +14,8 @@
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 me-auto">
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
-                        Copyright © 2020
-                        <a href="https://github.com/Proxeuse/fortify-tabler" class="link-secondary">Proxeuse</a>.
+                        © {{ date('Y') }}
+                        <a href="https://github.com/akukoder/fortify-tabler-admin" class="link-secondary">AkuKoder</a>.
                         All rights reserved.
                     </li>
                 </ul>

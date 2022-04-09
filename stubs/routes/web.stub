@@ -9,15 +9,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // Your dashboard page
-    Route::get('dashboard', function (\Illuminate\Http\Request $request) {
-        if ($request->has('theme')) {
-            (new \App\Actions\UserSettings)->set('user_theme', 'theme-'.$request->theme);
-
-            return redirect()->back();
-        }
-
-        return view('dashboard');
-    })->name('dashboard');
+    Route::view('dashboard', 'dashboard')
+        ->name('dashboard');
 
     // -----------------------------------------------------------------------------------------------------------------
     //  Profile related routes
@@ -34,6 +27,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::delete('/profile/device/{id}', [\App\Http\Controllers\ProfileController::class, 'removeDevice'])
         ->name('profile.deletedevice');
+
+    Route::get('/profile/theme', function (\Illuminate\Http\Request $request) {
+        if ($request->has('theme')) {
+            (new \App\Actions\UserSettings)->set('user_theme', 'theme-'.$request->theme);
+
+            return redirect()->back();
+        }
+    })->name('profile.theme');
 
 
     // -----------------------------------------------------------------------------------------------------------------
