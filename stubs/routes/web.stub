@@ -8,14 +8,30 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
+    // Your dashboard page
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');
 
-    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'show'])
+    // -----------------------------------------------------------------------------------------------------------------
+    //  Profile related routes
+    // -----------------------------------------------------------------------------------------------------------------
+
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'editProfile'])
         ->name('profile');
 
-    Route::delete('/profile', [\App\Http\Controllers\ProfileController::class, 'removeDevice'])
-        ->name('profile.device.delete');
+    Route::post('/profile/avatar', [\App\Http\Controllers\ProfileController::class, 'updateAvatar'])
+        ->name('profile.avatar');
+
+    Route::delete('/profile/avatar', [\App\Http\Controllers\ProfileController::class, 'removeOldAvatar'])
+        ->name('profile.deleteavatar');
+
+    Route::delete('/profile/device/{id}', [\App\Http\Controllers\ProfileController::class, 'removeDevice'])
+        ->name('profile.deletedevice');
+
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //  User management related routes
+    // -----------------------------------------------------------------------------------------------------------------
 
     Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index'])
         ->name('users.index');
