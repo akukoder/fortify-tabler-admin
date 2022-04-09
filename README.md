@@ -1,11 +1,11 @@
-![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui.png)
+![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-tabler-admin.png)
 
 # Introduction
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/akukoder/fortify-soft-ui.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
-[![Last Commit](https://img.shields.io/github/last-commit/akukoder/fortify-soft-ui?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
-[![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-soft-ui.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
-[![License](https://img.shields.io/packagist/l/akukoder/fortify-soft-ui?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![Last Commit](https://img.shields.io/github/last-commit/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![License](https://img.shields.io/packagist/l/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 
 **Fortify Tabler Admin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
 
@@ -52,7 +52,7 @@ For the design documentation, please refer to the official websites.
 
 ## Screenshot
 
-![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui-login.png)
+![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/screenshot.png)
 
 ## Credits
 - [FortifyUI](https://github.com/zacksmash/fortify-ui)
