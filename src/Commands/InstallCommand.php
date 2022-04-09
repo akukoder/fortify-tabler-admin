@@ -51,6 +51,11 @@ class InstallCommand extends Command
 
     protected function addControllers()
     {
+        if (! File::isDirectory(app_path('Http/Helpers'))) {
+            File::makeDirectory(app_path('Http/Helpers'));
+        }
+
+        File::copy(self::STUB_DIR.'/app/Http/Helpers/StrHelper.stub', app_path('Http/Helpers/StrHelper.php'));
         File::copy(self::STUB_DIR.'/app/Http/Controllers/ProfileController.stub', app_path('Http/Controllers/ProfileController.php'));
         File::copy(self::STUB_DIR.'/app/Http/Controllers/UsersController.stub', app_path('Http/Controllers/UsersController.php'));
     }
@@ -66,7 +71,16 @@ class InstallCommand extends Command
 
     protected function addActions()
     {
+        File::delete(app_path('Actions/Fortify/CreateNewUser.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/Fortify/CreateNewUser.stub', app_path('Actions/Fortify/CreateNewUser.php'));
+
+        File::delete(app_path('Actions/Fortify/ChangeUserPassword.php'));
         File::copy(self::STUB_DIR.'/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
+
+        File::delete(app_path('Actions/Fortify/UpdateUserrofileInformation.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/Fortify/UpdateUserrofileInformation.stub', app_path('Actions/Fortify/UpdateUserrofileInformation.php'));
+
+        File::copy(self::STUB_DIR.'/app/Actions/UserAvatar.stub', app_path('Actions/UserAvatar.php'));
         File::copy(self::STUB_DIR.'/app/Actions/UserSettings.stub', app_path('Actions/UserSettings.php'));
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\UserAvatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -60,32 +61,13 @@ class ProfileController extends Controller
      */
     private function processAvatar($request)
     {
-        // get file
-        $file = $request->file('avatar');
-
-        // get filename name with extension
-        $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-        // remove unwanted characters
-        $filename = preg_replace("/[^A-Za-z0-9 ]/", '', $filename);
-        $filename = preg_replace("/\s+/", '-', $filename);
-
-        // create unique file name
-        $uniqueFileName = substr(md5($filename), 0, 15).'_'.time().'.'.$file->getClientOriginalExtension();
-
-        // resize avatar
-        $resize = Image::make($file)->fit(400, null, function($constraint){
-            $constraint->upsize();
-        })->encode('png');
-
-        // save avatar to public storage
-        $save = Storage::put("public/avatars/{$uniqueFileName}", $resize->__toString());
+        $file = (new UserAvatar)->upload($request->file('avatar'));
 
         // if avatar has been stored successfully
-        if ($save) {
+        if ($file) {
             // update user table
             $user = auth()->user();
-            $user->avatar = $uniqueFileName;
+            $user->avatar = $file;
             $user->save();
 
             // return success
@@ -106,18 +88,9 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        // if user has an avatar currently in use
-        if ($user->avatar) {
-            // delete avatar from storage
-            Storage::delete('public/avatars/'.$user->avatar);
-        }
-
-        $user->avatar = null;
-        $user->save();
-
-        // if request comes from front-end
-        if ($internalRequest) {
-            return true;
+        if ((new UserAvatar)->delete($user) !== false) {
+            $user->avatar = null;
+            $user->save();
         }
 
         return redirect()

@@ -50,14 +50,14 @@
         @endif
     </div><!-- /.card-body -->
     @if (auth()->user()->two_factor_secret)
-        <div class="card-footer text-end">
-            <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('regenerateCodeForm').submit();">
-                {{ __('profile.button.regenerate_codes') }}
-            </button>
+    <div class="card-footer text-end">
+        <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('regenerateCodeForm').submit();">
+            {{ __('profile.button.regenerate_codes') }}
+        </button>
 
-            <button type="submit" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('disable2fa').submit();">
-                {{ __('profile.button.disable_2fa') }}
-            </button>
-        </div>
+        <button type="submit" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('disable2fa').submit();">
+            {{ __('profile.button.disable_2fa') }}
+        </button>
+    </div>
     @endif
 </div><!-- /.card -->

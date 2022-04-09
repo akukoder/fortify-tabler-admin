@@ -5,6 +5,6 @@
         @case('two-factor-authentication-enabled')
             @break
         @default
-            <div>{{ session('status') }}</div>
+            <div class="alert alert-info">{{ session('status') }}</div>
     @endswitch
 @endif

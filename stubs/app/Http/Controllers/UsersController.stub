@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Fortify\ChangeUserPassword;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Actions\UserAvatar;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,26 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::orderBy('name')
-            ->paginate(10);
+        $search = $request->input('search', null);
 
-        return view('users.index', compact('users'));
+        $users = new User;
+
+        if (! is_null($search)) {
+            $users = $users->where( function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('username', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
+            });
+
+        }
+
+        $users = $users->orderBy('name')
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('users.index', compact('users', 'search'));
     }
 
     /**
@@ -70,7 +85,7 @@ class UsersController extends Controller
     {
         $action = new UpdateUserProfileInformation;
 
-        $action->update($user, $request->only('name', 'email'));
+        $action->update($user, $request->only('name', 'email', 'username', 'avatar'));
 
         return redirect()
             ->route('users.index')
@@ -114,6 +129,10 @@ class UsersController extends Controller
      */
     public function delete(User $user)
     {
+        if (! empty($user->avatar)) {
+            (new UserAvatar)->delete($user);
+        }
+
         $user->delete();
 
         return redirect()

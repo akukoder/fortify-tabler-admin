@@ -30,7 +30,7 @@
                     class="form-control"
                     value="{{ old('email', auth()->user()->email) }}"
                     required
-                >
+                    >
                 <label for="form-email">{{ __('profile.label.email') }}</label>
             </div>
 
@@ -42,7 +42,7 @@
                     class="form-control"
                     value="{{ old('username', auth()->user()->username) }}"
                     required
-                >
+                    >
                 <label for="form-username">{{ __('profile.label.username') }}</label>
             </div>
         </div><!-- /.card-body -->

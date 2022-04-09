@@ -31,7 +31,7 @@
                     </div>
                     <input type="submit" class="btn btn-primary">
                     <button class="btn btn-danger"
-                            onclick="event.preventDefault(); $('#deleteAvatarForm').submit()">Delete Profile
+                        onclick="event.preventDefault(); document.getElementById('deleteAvatarForm').submit()">Delete Profile
                         Picture</button>
 
                 </form>
