@@ -7,7 +7,7 @@
             <div class="mb-3">
                 <label class="form-label">{{ __('auth.fields.email') }}</label>
                 <input class="form-control" type="email" name="email" placeholder="{{ __('auth.placeholder.email') }}"
-                    value="{{ old('email') }}" required autofocus tabindex="1" />
+                       value="{{ old('email') }}" required autofocus tabindex="1" />
             </div>
 
             <div class="mb-2">
@@ -15,15 +15,15 @@
                     {{ __('auth.fields.password') }}
 
                     @if(Route::has('password.request'))
-                    <span class="form-label-description">
+                        <span class="form-label-description">
                         <a href="{{ route('password.request') }}">{{ __('auth.placeholder.forgot_password') }}</a>
                     </span>
                     @endif
                 </label>
                 <div class="input-group input-group-flat">
                     <input class="form-control" type="password" name="password"
-                        placeholder="{{ __('auth.placeholder.password') }}" value="{{ old('password') }}" required
-                        tabindex="2" />
+                           placeholder="{{ __('auth.placeholder.password') }}" value="{{ old('password') }}" required
+                           tabindex="2" />
                     <span class="input-group-text">
                         <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip">
                             <svg
@@ -39,12 +39,12 @@
                 </div>
             </div>
 
-            {{-- <div class="mb-2">
+            <div class="mb-2">
                 <label class="form-check">
                     <input type="checkbox" name="remember" class="form-check-input" tabindex="3" />
                     <span class="form-check-label">{{ __('auth.remember_me') }}</span>
                 </label>
-            </div> --}}
+            </div>
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary w-100" tabindex="4">{{ __('auth.login_button') }}</button>
             </div>
@@ -53,7 +53,9 @@
 
     @if(Route::has('register'))
         <div class="text-center text-muted mt-3">
-            {{ __('auth.placeholder.dont_have_account') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.create_account') }}</a>
+            {{ __('auth.placeholder.dont_have_account') }} <a href="{{ route('register') }}" tabindex="-1">
+                {{ __('auth.create_account') }}
+            </a>
         </div>
     @endif
 </x-layouts.auth>

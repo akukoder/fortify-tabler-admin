@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
-    public $signature = 'tabler:install';
+    public $signature = 'fortify:tabler';
 
     public $description = 'Install Fortify Tabler Admin preset, with views, resources and some other features.';
 
@@ -35,9 +35,9 @@ class InstallCommand extends Command
             $this->updateUserModel();
             $this->updateSessionDriver();
 
-            $this->callSilent('storage:link');
-            $this->callSilent('migrate');
-            $this->callSilent('optimize:clear');
+            $this->call('storage:link');
+            $this->call('migrate');
+            $this->call('optimize:clear');
 
             $this->line('');
             $this->comment('Fortify Tabler Admin installation completed!');
@@ -56,6 +56,11 @@ class InstallCommand extends Command
     protected function addActions()
     {
         File::copy(self::STUB_DIR.'/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
+    }
+
+    protected function addMigrations()
+    {
+        File::copy(self::STUB_DIR.'/database/migrations/2020_12_13_155612_update_users_table.stub', base_path('database/migrations/2020_12_13_155612_update_users_table.php'));
     }
 
     protected function addViews()
@@ -84,6 +89,7 @@ class InstallCommand extends Command
         File::delete(base_path('package-lock.json'));
 
         File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
+        File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', resource_path('lang/en/profile.php'));
 
         File::copyDirectory(self::STUB_DIR.'/resources/tabler', resource_path('tabler'));
         File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
@@ -143,27 +149,8 @@ class InstallCommand extends Command
 
     protected function updateUserModel()
     {
-        $this->replaceInFile(
-            "class User extends Authenticatable".PHP_EOL,
-            "class User extends Authenticatable implements MustVerifyEmail".PHP_EOL,
-            app_path('Models/User.php')
-        );
-
-        $this->replaceInFile(
-            "use HasFactory, Notifiable;".PHP_EOL,
-            "use HasFactory, Notifiable, TwoFactorAuthenticatable;".PHP_EOL,
-            app_path('Models/User.php')
-        );
-
-        $content = file_get_contents(app_path('Models/User.php'));
-
-        if (strpos($content, 'Laravel\Fortify\TwoFactorAuthenticatable') === false) {
-            $this->replaceInFile(
-                "use Illuminate\Notifications\Notifiable;".PHP_EOL,
-                "use Illuminate\Notifications\Notifiable;\nuse Laravel\Fortify\TwoFactorAuthenticatable;".PHP_EOL,
-                app_path('Models/User.php')
-            );
-        }
+        File::delete(app_path('Models/User.php'));
+        File::copy(self::STUB_DIR.'/app/Models/User.stub', app_path('Models/User.php'));
     }
 
     /**

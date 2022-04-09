@@ -1,4 +1,4 @@
-![FortifySoftUi](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui.png)
+![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui.png)
 
 # Introduction
 
@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-soft-ui.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
 [![License](https://img.shields.io/packagist/l/akukoder/fortify-soft-ui?style=flat-square)](https://packagist.org/packages/akukoder/fortify-soft-ui)
 
-**FortifySoftUi** is a Laravel Fortify UI preset, built with [Soft UI Dashboard](https://www.creative-tim.com/product/soft-ui-dashboard) and [Soft UI Design System](https://www.creative-tim.com/product/soft-ui-design-system) by [Creative Tim](https://www.creative-tim.com).
+**Fortify Tabler Admin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
 
 ## Features
 
@@ -30,42 +30,34 @@ Laravel Fortify and FortifyUI will be installed automatically.
 
 ## Installation
 
-To get started, you'll need to install **FortifySoftUi** using composer.
+To get started, you'll need to install **Fortify Tabler Admin** using composer.
 
 ```bash
-composer require akukoder/fortify-soft-ui --dev
+composer require akukoder/fortify-tabler-admin --dev
 ```
 
 Next, you'll need to run the install command:
 
 ```bash
-php artisan fortify:softui
+php artisan fortify:tabler
 ```
-
-## Demo
-
-Visit the demo site [here](https://demo-fortify-soft-ui.akukoder.com/).
-
-- Email: ```demo@example.org```
-- Password: ```password```
-
 
 ## Documentation
 
 For the design documentation, please refer to the official websites.
 
-- [Soft UI Dashboard](https://www.creative-tim.com/learning-lab/bootstrap/overview/soft-ui-dashboard)
-- [Soft UI Design System](https://www.creative-tim.com/learning-lab/bootstrap/overview/soft-ui-design-system)
+- [Tabler](https://tabler.io)
 - [Bootstrap 5](https://getbootstrap.com/)
 
 ## Screenshot
 
-![FortifySoftUi Screenshot](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui-login.png)
+![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-soft-ui/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-soft-ui-login.png)
 
 ## Credits
 - [FortifyUI](https://github.com/zacksmash/fortify-ui)
-- [Creative Tim](https://www.creative-tim.com)
+- [Tabler](https://tabler.io)
+- [Proxeuse](https://github.com/Proxeuse/fortify-tabler)
 
 ## License
 
-**FortifySoftUi** is open-sourced software licensed under the [MIT license](LICENSE.md).
+**Fortify Tabler Admin** is open-sourced software licensed under the [MIT license](LICENSE.md).
