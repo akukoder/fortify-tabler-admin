@@ -30,6 +30,7 @@ class InstallCommand extends Command
             $this->updateConfig();
             $this->updateRoutes();
             $this->addControllers();
+            $this->addEvents();
             $this->addActions();
             $this->addMigrations();
             $this->addViews();
@@ -52,6 +53,15 @@ class InstallCommand extends Command
     {
         File::copy(self::STUB_DIR.'/app/Http/Controllers/ProfileController.stub', app_path('Http/Controllers/ProfileController.php'));
         File::copy(self::STUB_DIR.'/app/Http/Controllers/UsersController.stub', app_path('Http/Controllers/UsersController.php'));
+    }
+
+    protected function addEvents()
+    {
+        if (! File::isDirectory(app_path('Listeners'))) {
+            File::makeDirectory(app_path('Listeners'));
+        }
+
+        File::copy(self::STUB_DIR.'/app/Listeners/LoadUserSettings.stub', app_path('Listeners/LoadUserSettings.php'));
     }
 
     protected function addActions()
@@ -83,6 +93,7 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-resources', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-public', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'tabler-language', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--provider' => 'Arcanedev\LaravelSettings\SettingsServiceProvider', '--force' => true]);
 
         File::delete(resource_path('lang/en/auth.php'));
 
@@ -105,7 +116,6 @@ class InstallCommand extends Command
         }
 
         File::copy(self::STUB_DIR.'/resources/sass/app.stub', resource_path('sass/app.scss'));
-
     }
 
     protected function updateProvider()
@@ -115,6 +125,9 @@ class InstallCommand extends Command
 
         File::delete(app_path('Providers/AppServiceProvider.php'));
         File::copy(self::STUB_DIR.'/app/Providers/AppServiceProvider.stub', app_path('Providers/AppServiceProvider.php'));
+
+        File::delete(app_path('Providers/EventServiceProvider.php'));
+        File::copy(self::STUB_DIR.'/app/Providers/EventServiceProvider.stub', app_path('Providers/EventServiceProvider.php'));
     }
 
     protected function updateConfig()
@@ -122,6 +135,7 @@ class InstallCommand extends Command
         File::delete(config_path('fortify.php'));
         File::copy(self::STUB_DIR.'/config/fortify.stub', config_path('fortify.php'));
         File::copy(self::STUB_DIR.'/config/avatar.stub', config_path('avatar.php'));
+        File::copy(self::STUB_DIR.'/config/settings.stub', config_path('settings.php'));
     }
 
     protected function updateRoutes()

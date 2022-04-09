@@ -5,7 +5,7 @@
 
             <div>You are logged in!</div>
 
-            
+
         </div>
     </x-page.container>
 </x-layouts.dashboard>
