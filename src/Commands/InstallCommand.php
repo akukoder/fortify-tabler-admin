@@ -30,6 +30,7 @@ class InstallCommand extends Command
             $this->updateConfig();
             $this->updateRoutes();
             $this->addControllers();
+            $this->addRules();
             $this->addEvents();
             $this->addActions();
             $this->addMigrations();
@@ -69,6 +70,15 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/app/Listeners/LoadUserSettings.stub', app_path('Listeners/LoadUserSettings.php'));
     }
 
+    protected function addRules()
+    {
+        if (! File::isDirectory(app_path('Rules'))) {
+            File::makeDirectory(app_path('Rules'));
+        }
+
+        File::copy(self::STUB_DIR.'/app/Rules/Username.stub', app_path('Rules/Username.php'));
+    }
+
     protected function addActions()
     {
         File::delete(app_path('Actions/Fortify/CreateNewUser.php'));
@@ -82,6 +92,7 @@ class InstallCommand extends Command
 
         File::copy(self::STUB_DIR.'/app/Actions/UserAvatar.stub', app_path('Actions/UserAvatar.php'));
         File::copy(self::STUB_DIR.'/app/Actions/UserSettings.stub', app_path('Actions/UserSettings.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/UsernameValidationRules.stub', app_path('Actions/UsernameValidationRules.php'));
     }
 
     protected function addMigrations()

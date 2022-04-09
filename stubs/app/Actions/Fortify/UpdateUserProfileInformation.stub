@@ -3,7 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Actions\UserAvatar;
-use App\Models\User;
+use App\Actions\UsernameValidationRules;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -11,6 +11,8 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
+    use UsernameValidationRules;
+
     /**
      * Validate and update the given user's profile information.
      *
@@ -31,12 +33,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 Rule::unique('users')->ignore($user->id),
             ],
 
-            'username' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique(User::class)->ignore($user->id),
-            ],
+            'username' => $this->usernameRules($user->id),
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['avatar'])) {
@@ -75,6 +72,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'avatar' => $input['avatar'],
             'name' => $input['name'],
+            'username' => $input['username'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();
