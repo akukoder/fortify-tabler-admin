@@ -31,6 +31,7 @@ class InstallCommand extends Command
             $this->updateRoutes();
             $this->addControllers();
             $this->addActions();
+            $this->addMigrations();
             $this->addViews();
             $this->updateUserModel();
             $this->updateSessionDriver();
@@ -60,6 +61,8 @@ class InstallCommand extends Command
 
     protected function addMigrations()
     {
+        File::delete(base_path('database/factories/UserFactory.php'));
+        File::copy(self::STUB_DIR.'/database/factories/UserFactory.stub', base_path('database/factories/UserFactory.php'));
         File::copy(self::STUB_DIR.'/database/migrations/2020_12_13_155612_update_users_table.stub', base_path('database/migrations/2020_12_13_155612_update_users_table.php'));
     }
 

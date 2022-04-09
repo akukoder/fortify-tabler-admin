@@ -26,12 +26,15 @@ return [
     'fields' => [
         'name' => 'Name',
         'email' => 'Email',
+        'username' => 'Username',
+        'email_or_username' => 'Username or Email',
         'password' => 'Password',
         'password_confirmation' => 'Password Confirmation',
     ],
     'placeholder' => [
         'name' => 'Enter your full name',
         'email' => 'Enter your email',
+        'email_or_username' => 'Username or Email',
         'password' => 'Enter your password',
         'password_confirmation' => 'Confirm your password',
         'forgot_password' => 'Forgot your password?',
