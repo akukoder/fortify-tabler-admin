@@ -21,6 +21,7 @@ All Fortify features enabled by default, and some other basic features to get yo
 6. Two-factor authentication
 7. Browser session
 8. User management
+9. User theme setting (light or dark theme)
 
 ## Requirement
 

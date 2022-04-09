@@ -43,18 +43,21 @@
             </form>
 
             {{-- Disable 2FA --}}
-            <form method="POST" action="{{ url('user/two-factor-authentication') }}">
+            <form method="POST" action="{{ url('user/two-factor-authentication') }}" id="disable2fa">
                 @csrf
                 @method('DELETE')
-
-                <button class="btn btn-primary" onclick='event.preventDefault(); document.getElementById("regenerateCodeForm").submit();'>
-                    {{ __('profile.button.regenerate_codes') }}
-                </button>
-
-                <button type="submit" class="btn btn-danger">
-                    {{ __('profile.button.disable_2fa') }}
-                </button>
             </form>
         @endif
     </div><!-- /.card-body -->
+    @if (auth()->user()->two_factor_secret)
+        <div class="card-footer text-end">
+            <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('regenerateCodeForm').submit();">
+                {{ __('profile.button.regenerate_codes') }}
+            </button>
+
+            <button type="submit" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('disable2fa').submit();">
+                {{ __('profile.button.disable_2fa') }}
+            </button>
+        </div>
+    @endif
 </div><!-- /.card -->

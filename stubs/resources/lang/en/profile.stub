@@ -21,11 +21,15 @@ return [
         'last_activity' => 'Last Activity',
     ],
     'label' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'username' => 'Username',
         'current_password' => 'Current Password',
         'new_password' => 'New Password',
         'confirm_new_password' => 'Confirm New Password',
     ],
     'button' => [
+        'update_profile' => 'Update Profile',
         'update_password' => 'Update Your Password',
         'enable_2fa' => 'Enable Two-factor Authentication',
         'regenerate_codes' => 'Regenerate Recovery Codes',
