@@ -112,6 +112,7 @@ class InstallCommand extends Command
 
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Auth.stub', app_path('View/Components/Layouts/Auth.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Horizontal.stub', app_path('View/Components/Layouts/Horizontal.php'));
+        File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Overlap.stub', app_path('View/Components/Layouts/Overlap.php'));
     }
 
     protected function publishAssets()
