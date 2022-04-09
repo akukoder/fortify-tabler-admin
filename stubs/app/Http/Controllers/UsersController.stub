@@ -8,17 +8,22 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Actions\UserAvatar;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
     /**
      * Show all users
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index(Request $request)
     {
         $search = $request->input('search', null);
+
+        if (! empty($search)) {
+            $this->validateSearch($request->all());
+        }
 
         $users = new User;
 
@@ -158,5 +163,15 @@ class UsersController extends Controller
         return redirect()
             ->back()
             ->with('status', __('Profile picture deleted!'));
+    }
+
+    private function validateSearch($input)
+    {
+        Validator::make($input, [
+            'search' => [
+                'string',
+                'min:3'
+            ],
+        ])->validate();
     }
 }

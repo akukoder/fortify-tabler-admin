@@ -20,6 +20,7 @@
     <x-page.container>
         <div class="col">
             <x-status />
+            <x-errors />
             <div class="card">
                 <div class="card-body">
 

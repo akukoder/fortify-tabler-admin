@@ -11,18 +11,21 @@ class StrHelper
      * @param   string  $haystack           subject
      * @return  string  highlighted text
      */
-    public static function highlight($needle, $haystack) {
+    public static function highlight($needle, $haystack)
+    {
+        if (! empty($needle)) {
 
-        $tag = '<b><span class="search-highlight">$0</span></b>';
+            $tag = '<mark>$0</mark>';
 
-        if (strpos($needle, '/')) {
-            return $haystack;
-        }
+            if (strpos($needle, '/')) {
+                return $haystack;
+            }
 
-        $highlighted = preg_filter('/' . preg_quote($needle) . '/i', $tag, $haystack);
+            $highlighted = preg_filter('/' . preg_quote($needle) . '/i', $tag, $haystack);
 
-        if (!empty($highlighted)) {
-            $haystack = $highlighted;
+            if (!empty($highlighted)) {
+                $haystack = $highlighted;
+            }
         }
 
         return $haystack;
