@@ -1,4 +1,4 @@
-![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/fortify-tabler-admin.png)
+![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/fortify-tabler-admin.png)
 
 # Introduction
 
@@ -52,7 +52,7 @@ For the design documentation, please refer to the official websites.
 
 ## Screenshot
 
-![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/d4aeed12cfdf772bb1a1a069559e1740a6903927/screenshot.png)
+![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/screenshot.png)
 
 ## Credits
 - [FortifyUI](https://github.com/zacksmash/fortify-ui)
