@@ -64,4 +64,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::delete('/user/{user}/delete', [\App\Http\Controllers\UsersController::class, 'delete'])
         ->name('users.delete');
 
+    Route::get('/user/{user}/delete-avatar', [\App\Http\Controllers\UsersController::class, 'deleteAvatar'])
+        ->name('users.delete-avatar');
+
 });

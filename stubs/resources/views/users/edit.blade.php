@@ -36,9 +36,14 @@
                                     <img
                                         src="{{ (new App\Actions\UserAvatar)->get($user) }}"
                                         class="img-fluid w-50 mt-2">
-                                    <br>
 
-
+                                    <div class="text-danger mt-1">
+                                        <a
+                                            href="{{ route('users.delete-avatar', $user) }}"
+                                            class="btn btn-danger">
+                                            {{ __('Delete Profile Picture') }}
+                                        </a>
+                                    </div>
                                 </div>
                             @endif
                         </div><!-- /.form-group -->

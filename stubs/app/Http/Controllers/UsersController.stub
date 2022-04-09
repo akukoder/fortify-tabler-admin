@@ -139,4 +139,24 @@ class UsersController extends Controller
             ->route('users.index')
             ->with('status', __('User deleted!'));
     }
+
+    /**
+     * Delete a user
+     *
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteAvatar(User $user)
+    {
+        if (! empty($user->avatar)) {
+            (new UserAvatar)->delete($user);
+        }
+
+        $user->avatar = null;
+        $user->save();
+
+        return redirect()
+            ->back()
+            ->with('status', __('Profile picture deleted!'));
+    }
 }
