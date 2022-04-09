@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Actions\UserSettings;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -26,12 +27,6 @@ class LoadUserSettings
      */
     public function handle(Login $event)
     {
-        settings()->setExtraColumns(['user_id' => $event->user->id]);
-
-        if (! settings()->has('user_theme')) {
-            settings()->set('user_theme', 'light-theme');
-        }
-
-        settings()->save();
+        (new UserSettings)->set('user_theme', 'theme-light');
     }
 }

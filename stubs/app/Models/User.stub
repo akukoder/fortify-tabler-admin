@@ -53,4 +53,24 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return ! empty($this->avatar) ? $this->avatar : config('avatar.service_url').'?name='.urlencode($this->name).'&color=fff&background='.substr(md5($this->name), 0, 6).'&size='.config('avatar.size');
     }
+
+    /**
+     * Load user specific settings
+     *
+     * @param string $key
+     * @param null $default
+     * @return false|mixed
+     */
+    public function settings(string $key, $default = null)
+    {
+        settings()->setExtraColumns([
+            'user_id' => $this->id
+        ]);
+
+        if (settings()->has($key)) {
+            return settings()->get($key);
+        }
+
+        return $default;
+    }
 }

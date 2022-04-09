@@ -12,7 +12,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
     </head>
 
-    <body class="antialiased d-flex flex-column">
+    <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
             <x-page.header />
 

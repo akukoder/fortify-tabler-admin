@@ -67,6 +67,7 @@ class InstallCommand extends Command
     protected function addActions()
     {
         File::copy(self::STUB_DIR.'/app/Actions/Fortify/ChangeUserPassword.stub', app_path('Actions/Fortify/ChangeUserPassword.php'));
+        File::copy(self::STUB_DIR.'/app/Actions/UserSettings.stub', app_path('Actions/UserSettings.php'));
     }
 
     protected function addMigrations()
