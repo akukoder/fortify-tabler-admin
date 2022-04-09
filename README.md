@@ -3,7 +3,7 @@
 # Introduction
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
-[![Last Commit](https://img.shields.io/github/last-commit/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![Last Commit](https://img.shields.io/bitbucket/last-commit/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 [![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 [![License](https://img.shields.io/packagist/l/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 
@@ -50,12 +50,18 @@ For the design documentation, please refer to the official websites.
 - [Tabler](https://tabler.io)
 - [Bootstrap 5](https://getbootstrap.com/)
 
+## Dependencies
+
+1. [Fortify UI](https://github.com/zacksmash/fortify-ui)
+2. [Intervention Image](https://github.com/intervention/image)
+3. [Arcanedev Laravel Settings](https://github.com/ARCANEDEV/LaravelSettings/)
+
 ## Screenshot
 
 ![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/screenshot.png)
 
 ## Credits
-- [FortifyUI](https://github.com/zacksmash/fortify-ui)
+- [Fortify UI](https://github.com/zacksmash/fortify-ui)
 - [Tabler](https://tabler.io)
 - [Proxeuse](https://github.com/Proxeuse/fortify-tabler)
 

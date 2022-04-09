@@ -1,6 +1,6 @@
 {
     "name": "akukoder/fortify-tabler-admin",
-    "description": "Laravel Fortify based on FortifyUI and open source Tabler theme.",
+    "description": "Laravel Fortify based on Fortify UI and open source Tabler theme.",
     "keywords": [
         "laravel",
         "fortify",
@@ -8,7 +8,7 @@
         "fortify-tabler-admin",
         "tabler"
     ],
-    "homepage": "https://github.com/akukoder/fortify-tabler-admin",
+    "homepage": "https://bitbucket.org/akukoder/fortify-tabler-admin",
     "license": "MIT",
     "authors": [
         {
@@ -21,8 +21,6 @@
     "require": {
         "php": "^7.3|^8.0",
         "arcanedev/laravel-settings": "^8.1|^9.0",
-        "illuminate/console": "^8.0|^9.0",
-        "illuminate/database": "^8.0|^9.0",
         "illuminate/support": "^8.0|^9.0",
         "intervention/image": "^2.5.1",
         "zacksmash/fortify-ui": "^1.0"
