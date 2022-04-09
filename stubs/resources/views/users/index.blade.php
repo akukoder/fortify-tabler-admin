@@ -1,4 +1,4 @@
-<x-layouts.dashboard>
+<x-layouts.horizontal>
     <x-slot name="page_pretitle">
         {{ __('users.header.page_pretitle') }}
     </x-slot>
@@ -17,7 +17,7 @@
         </div>
     </x-slot>
 
-    <x-page.container>
+    <x-container>
         <div class="col">
             <x-status />
             <x-errors />
@@ -132,7 +132,7 @@
 
 
         </div>
-    </x-page.container>
+    </x-container>
 
     <x-slot name="js">
         <script>
@@ -151,4 +151,4 @@
             })
         </script>
     </x-slot>
-</x-layouts.dashboard>
+</x-layouts.horizontal>

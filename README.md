@@ -58,7 +58,7 @@ For the design documentation, please refer to the official websites.
 
 ## Screenshot
 
-![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/screenshot.png)
+![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/4fe4a1b4a5fdafca82768efcd7173bad697ecca5/screenshot.png)
 
 ## Credits
 - [Fortify UI](https://github.com/zacksmash/fortify-ui)

@@ -1,5 +1,5 @@
-<x-layouts.dashboard>
-    <x-page.container>
+<x-layouts.horizontal>
+    <x-container>
         <div class="col">
             <x-status />
 
@@ -7,5 +7,5 @@
 
 
         </div>
-    </x-page.container>
-</x-layouts.dashboard>
+    </x-container>
+</x-layouts.horizontal>

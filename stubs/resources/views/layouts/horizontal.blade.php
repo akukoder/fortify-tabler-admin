@@ -14,9 +14,9 @@
 
     <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
-            <x-page.header />
+            <x-header />
 
-            <x-page.navbar />
+            <x-navbar />
 
             <div class="page-wrapper">
                 @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))
@@ -48,7 +48,7 @@
                     {{ $slot }}
                 </div>
 
-                <x-page.footer />
+                <x-footer />
             </div>
 
         </div>

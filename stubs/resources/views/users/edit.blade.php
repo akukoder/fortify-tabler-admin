@@ -1,6 +1,6 @@
-<x-layouts.dashboard>
+<x-layouts.horizontal>
 
-    <x-page.container>
+    <x-container>
         <x-errors />
         <div class="col">
             <form action="{{ route('users.update', $user) }}" method="post" enctype="multipart/form-data">
@@ -168,5 +168,5 @@
                 </div><!-- /.card -->
             </form>
         </div>
-    </x-page.container>
-</x-layouts.dashboard>
+    </x-container>
+</x-layouts.horizontal>

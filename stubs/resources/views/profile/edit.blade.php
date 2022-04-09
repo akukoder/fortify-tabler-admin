@@ -1,4 +1,4 @@
-<x-layouts.dashboard>
+<x-layouts.horizontal>
     <x-slot name="page_pretitle">
         {{ __('profile.header.page_pretitle') }}
     </x-slot>
@@ -7,7 +7,7 @@
         {{ __('profile.header.page_title') }}
     </x-slot>
 
-    <x-page.container>
+    <x-container>
         <div class="col">
             <x-status />
             <div class="content">
@@ -45,5 +45,5 @@
                 </div>
             </div>
         </div>
-    </x-page.container>
-</x-layouts.dashboard>
+    </x-container>
+</x-layouts.horizontal>

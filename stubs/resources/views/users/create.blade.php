@@ -1,6 +1,6 @@
-<x-layouts.dashboard>
+<x-layouts.horizontal>
 
-    <x-page.container>
+    <x-container>
         <div class="col">
             <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -148,5 +148,5 @@
                 </div><!-- /.card -->
             </form>
         </div>
-    </x-page.container>
-</x-layouts.dashboard>
+    </x-container>
+</x-layouts.horizontal>
