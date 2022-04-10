@@ -33,13 +33,13 @@ Laravel Fortify and FortifyUI will be installed automatically.
 
 To get started, you'll need to install **Fortify Tabler Admin** using composer.
 
-```bash
+```shell script
 composer require akukoder/fortify-tabler-admin --dev
 ```
 
 Next, you'll need to run the install command:
 
-```bash
+```shell script
 php artisan fortify:tabler
 ```
 
