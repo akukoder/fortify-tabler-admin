@@ -2,6 +2,9 @@
 
 namespace Akukoder\FortifyTablerAdmin\Commands;
 
+use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
 use Illuminate\Console\Command;
 
 class ChangeLayoutCommand extends Command
@@ -18,7 +21,7 @@ class ChangeLayoutCommand extends Command
 
         $layout = $this->choice(
             'Which do layout you wish to use?',
-            ['horizontal', 'overlap', 'vertical'],
+            ['horizontal', 'overlap', 'vertical', 'vertical-transparent'],
             0,
         );
 

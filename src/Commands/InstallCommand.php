@@ -2,6 +2,9 @@
 
 namespace Akukoder\FortifyTablerAdmin\Commands;
 
+use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
