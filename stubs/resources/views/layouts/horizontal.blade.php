@@ -14,9 +14,7 @@
 
     <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
-            <x-header />
-
-            <x-navbar />
+            <x-header combine="0" sticky="0" overlap="0" />
 
             <div class="page-wrapper">
                 @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))

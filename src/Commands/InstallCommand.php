@@ -16,7 +16,7 @@ class InstallCommand extends Command
 
     public $signature = 'fortify:tabler';
 
-    public $description = 'Install Fortify Tabler Admin preset, with views, resources and some other features.';
+    public $description = 'Install FortifyTablerAdmin preset, with views, resources and some other features.';
 
     const STUB_DIR = __DIR__.'/../../stubs';
 
@@ -29,12 +29,12 @@ class InstallCommand extends Command
             exit;
         }
 
-        list($layout, $position, $style, $sticky) = $this->askQuestions();
+        list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
 
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
-            $this->info('Fortify UI has been installed. Proceeding to install Fortify Tabler Admin.');
+            $this->info('Fortify UI has been installed. Proceeding to install the preset.');
 
             $this->publishAssets();
             $this->updateProvider();
@@ -48,14 +48,14 @@ class InstallCommand extends Command
             $this->addViews();
             $this->updateUserModel();
             $this->updateSessionDriver();
-            $this->changeLayoutInViews($layout, $position, $style, $sticky);
+            $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
 
             $this->callSilent('storage:link');
             $this->callSilent('migrate');
             $this->callSilent('optimize:clear');
 
             $this->line('');
-            $this->comment('Fortify Tabler Admin installation completed!');
+            $this->comment('FortifyTablerAdmin installation completed!');
         }
         catch (\Illuminate\Database\QueryException $e) {
             $this->error('Database not exists! Please create database for your application before proceeding.');

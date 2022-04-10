@@ -7,9 +7,7 @@ use function resource_path;
 
 trait ChangeLayoutTrait
 {
-    protected $navbarBase = 'navbar navbar-vertical navbar-expand-lg';
-
-    protected function changeLayoutInViews($layout, $position = null, $style = null, $sticky = null)
+    protected function changeLayoutInViews($layout, $position = null, $combine = null, $style = null, $sticky = null)
     {
         $folders = [
             resource_path('views'),
@@ -41,8 +39,36 @@ trait ChangeLayoutTrait
                 break;
 
             case 'horizontal':
+                $this->setHeaderCombine($combine);
                 $this->setHeaderStyle($style);
                 $this->setHeaderSticky($sticky);
+                break;
+        }
+    }
+
+    /**
+     * Set header to combine with navbar
+     *
+     * @param $combine
+     * @return void
+     */
+    private function setHeaderCombine($combine)
+    {
+        switch ($combine) {
+            case 'yes':
+                $this->replaceInFile(
+                    'combine="0"',
+                    'combine="1"',
+                    resource_path('views/layouts/horizontal.blade.php')
+                );
+                break;
+
+            case 'no':
+                $this->replaceInFile(
+                    'combine="1"',
+                    'combine="0"',
+                    resource_path('views/layouts/horizontal.blade.php')
+                );
                 break;
         }
     }
@@ -64,8 +90,8 @@ trait ChangeLayoutTrait
                 );
 
                 $this->replaceInFile(
-                    '<x-navbar-logo />',
-                    '<x-navbar-logo-white />',
+                    '<x-navbar-logo light="0" />',
+                    '<x-navbar-logo light="1" />',
                     resource_path('views/components/header.blade.php')
                 );
                 break;
@@ -78,8 +104,8 @@ trait ChangeLayoutTrait
                 );
 
                 $this->replaceInFile(
-                    '<x-navbar-logo-white />',
-                    '<x-navbar-logo />',
+                    '<x-navbar-logo light="1" />',
+                    '<x-navbar-logo light="0" />',
                     resource_path('views/components/header.blade.php')
                 );
                 break;
@@ -89,7 +115,7 @@ trait ChangeLayoutTrait
     /**
      * Set header styling
      *
-     * @param $style
+     * @param $sticky
      * @return void
      */
     private function setHeaderSticky($sticky)
@@ -97,40 +123,17 @@ trait ChangeLayoutTrait
         switch ($sticky) {
             case 'yes':
                 $this->replaceInFile(
-                    'navbar navbar-expand-md',
-                    'navbar navbar-expand-md sticky-top',
-                    resource_path('views/components/header.blade.php')
-                );
-
-                $this->replaceInFile(
-                    '<x-header />',
-                    '<div class="sticky-top"><x-header />',
+                    'sticky="0"',
+                    'sticky="1"',
                     resource_path('views/layouts/horizontal.blade.php')
                 );
 
-                $this->replaceInFile(
-                    '<x-navbar />',
-                    '<x-navbar /></div><!-- /.sticky-top -->',
-                    resource_path('views/layouts/horizontal.blade.php')
-                );
                 break;
 
             case 'no':
                 $this->replaceInFile(
-                    ' sticky-top',
-                    '',
-                    resource_path('views/components/header.blade.php')
-                );
-
-                $this->replaceInFile(
-                    '<div class="sticky-top"><x-header />',
-                    '<x-header />',
-                    resource_path('views/layouts/horizontal.blade.php')
-                );
-
-                $this->replaceInFile(
-                    '<x-navbar /></div><!-- /.sticky-top -->',
-                    '<x-navbar />',
+                    'sticky="1"',
+                    'sticky="0"',
                     resource_path('views/layouts/horizontal.blade.php')
                 );
                 break;

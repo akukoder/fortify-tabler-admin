@@ -6,9 +6,10 @@ trait QuestionTrait
 {
     public function askQuestions()
     {
-        $position = null;
-        $style = null;
-        $sticky = null;
+        $position = 0;
+        $combine = 0;
+        $style = 0;
+        $sticky = 0;
 
         $layout = $this->choice(
             'Choose layout',
@@ -32,6 +33,12 @@ trait QuestionTrait
                 break;
 
             case 'horizontal':
+                $combine = $this->choice(
+                    'Do you want to combine header and navbar?',
+                    ['no', 'yes'],
+                    0,
+                );
+
                 $style = $this->choice(
                     'Choose navbar styling',
                     ['light', 'dark'],
@@ -49,7 +56,7 @@ trait QuestionTrait
         }
 
         return [
-            $layout, $position, $style, $sticky
+            $layout, $position, $combine, $style, $sticky
         ];
     }
 }

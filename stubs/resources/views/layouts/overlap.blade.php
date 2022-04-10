@@ -16,7 +16,7 @@
         <div class="page">
 
             <div class="page-wrapper">
-                <x-overlap.header />
+                <x-header combine="0" sticky="0" overlap="1" />
 
                 @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))
                     <div class="container-xl">

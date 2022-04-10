@@ -14,7 +14,7 @@
 
     <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
-            <x-vertical.aside />
+            <x-sidebar />
 
             <div class="page-wrapper">
                 @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))

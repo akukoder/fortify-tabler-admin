@@ -20,9 +20,9 @@ class ChangeLayoutCommand extends Command
     {
         $this->showIntro();
 
-        list($layout, $position, $style, $sticky) = $this->askQuestions();
+        list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
 
-        $this->changeLayoutInViews($layout, $position, $style, $sticky);
+        $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
 
         $this->callSilent('optimize:clear');
 
