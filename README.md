@@ -1,4 +1,4 @@
-![Fortify Tabler Admin](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/fortify-tabler-admin.png)
+![FortifyTablerAdmin](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/43ab4d3cb0ee8849349ae4995fb1b7c253db70c9/fortify-tabler-admin.png)
 
 # Introduction
 
@@ -7,37 +7,39 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 [![License](https://img.shields.io/packagist/l/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 
-**Fortify Tabler Admin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
+**FortifyTablerAdmin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
 
 ## Features
 
 All Fortify features enabled by default, and some other basic features to get you started.
 
-1. Registration
-2. Reset password
-3. Email verification
-4. Profile Information
-5. Update password
-6. Two-factor authentication
-7. Browser session
-8. User management
-9. User theme setting (light or dark theme)
+1. Login
+2. Registration
+3. Reset password
+4. Email verification
+5. Profile Information
+6. Update password
+7. Two-factor authentication
+8. Browser session
+9. User management
+10. Multiple dashboard layouts to choose
+11. Light or dark theme (per user setting)
 
 ## Requirement
 
-Install the package on the new Laravel installation only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
+Install the package on the new **Laravel 8 and above** only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
 
 ## Installation
 
-To get started, you'll need to install **Fortify Tabler Admin** using composer.
+To get started, you'll need to install **FortifyTablerAdmin** using composer.
 
-```shell script
+```shell
 composer require akukoder/fortify-tabler-admin --dev
 ```
 
 Next, you'll need to run the install command:
 
-```shell script
+```shell
 php artisan fortify:tabler
 ```
 
@@ -54,7 +56,7 @@ Then you can select which layout you want to use in your app. There are 3 layout
 
 If you want to change the layout, just execute this command:
 
-```shell script
+```shell
 php artisan fortify:layout
 ```
 
@@ -70,7 +72,7 @@ For the documentations, please refer to the official websites.
 
 ## Screenshot
 
-![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot.png)
+![FortifyTablerAdmin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot.png)
 
 ### Horizontal (Default)
 ![Horizontal Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-horizontal.png)
@@ -91,4 +93,4 @@ For the documentations, please refer to the official websites.
 
 ## License
 
-**Fortify Tabler Admin** is open-sourced software licensed under the [MIT license](LICENSE.md).
+**FortifyTablerAdmin** is open-sourced software licensed under the [MIT license](LICENSE.md).
