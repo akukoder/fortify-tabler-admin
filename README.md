@@ -46,6 +46,7 @@ Then you can select which layout you want to use in your app. There are 3 layout
 1. [Horizontal](https://preview.tabler.io/layout-horizontal.html)
 2. [Overlap](https://preview.tabler.io/layout-navbar-overlap.html)
 3. [Vertical](https://preview.tabler.io/layout-vertical.html)
+3. [Vertical Transparent](https://preview.tabler.io/layout-vertical-transparent.html)
 
 *You can view the demo for each layout from Tabler official demo.*
 
@@ -69,7 +70,19 @@ For the documentations, please refer to the official websites.
 
 ## Screenshot
 
-![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/4fe4a1b4a5fdafca82768efcd7173bad697ecca5/screenshot.png)
+![Fortify Tabler Admin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot.png)
+
+### Horizontal (Default)
+![Horizontal Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-horizontal.png)
+
+### Overlap
+![Overlap Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-overlap.png)
+
+### Vertical
+![Vertical Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-vertical.png)
+
+### Vertical Transparent
+![Vertical Transparent Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-vertical-transparent.png)
 
 ## Credits
 - [Fortify UI](https://github.com/zacksmash/fortify-ui)
