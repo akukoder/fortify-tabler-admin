@@ -24,7 +24,6 @@
             </div>
         </div>
 
-        <script src="{{ mix('js/app.js') }}"></script>
-        {{ $js ?? '' }}
+        <x-scripts />
     </body>
 </html>

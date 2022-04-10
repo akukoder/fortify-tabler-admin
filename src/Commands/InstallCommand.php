@@ -61,8 +61,6 @@ class InstallCommand extends Command
         }
     }
 
-
-
     protected function addControllers()
     {
         if (! File::isDirectory(app_path('Http/Helpers'))) {

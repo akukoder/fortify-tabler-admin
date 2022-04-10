@@ -24,16 +24,7 @@ trait ChangeLayoutTrait
         $tag = 'x-layouts.'.$layout;
 
         foreach ($folders as $folder) {
-
-            if (config('app.debug')) {
-                $this->line($folder);
-            }
-
             foreach (File::allFiles($folder) as $file) {
-                if (config('app.debug')) {
-                    $this->line($file);
-                }
-
                 foreach ($layoutTags as $item) {
                     $this->replaceInFile($item, $tag, $file);
                 }

@@ -1,11 +1,9 @@
 <x-layouts.horizontal>
-    <x-container>
-        <div class="col">
-            <x-status />
-
-            <div>You are logged in!</div>
-
-
+    <div class="container-xl">
+        <div class="row">
+            <div class="col">
+                <div>You are logged in!</div>
+            </div>
         </div>
-    </x-container>
+    </div>
 </x-layouts.horizontal>

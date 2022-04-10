@@ -15,7 +15,7 @@
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
                         © {{ date('Y') }}
-                        <a href="https://github.com/akukoder/fortify-tabler-admin" class="link-secondary">AkuKoder</a>.
+                        <a href="https://bitbucket.org/akukoder/fortify-tabler-admin" class="link-secondary">AkuKoder</a>.
                         All rights reserved.
                     </li>
                 </ul>
