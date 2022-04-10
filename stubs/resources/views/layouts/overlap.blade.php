@@ -50,6 +50,6 @@
                 <x-footer />
             </div><!-- /.page-wrapper -->
         </div><!-- /.page -->
-        <x-scripts />
+        <x-scripts :js="$js" />
     </body>
 </html>
