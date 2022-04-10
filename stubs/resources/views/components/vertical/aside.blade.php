@@ -6,8 +6,8 @@
         <h1 class="navbar-brand navbar-brand-autodark">
             <x-navbar-logo-white />
         </h1>
-        <div class="navbar-nav flex-column flex-grow-0">
-            <x-navbar-item-user class="my-3" />
+        <div class="navbar-nav px-2 flex-row flex-grow-0 bg-light text-dark rounded">
+            <x-navbar-item-user class="my-2" position="start" />
 {{--            <x-nav-item-utils />--}}
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">

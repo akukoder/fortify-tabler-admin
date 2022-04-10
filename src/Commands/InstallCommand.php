@@ -29,7 +29,7 @@ class InstallCommand extends Command
 
         $layout = $this->choice(
             'Which layout do you wish to use?',
-            ['horizontal', 'overlap', 'vertical'],
+            ['horizontal', 'overlap', 'vertical', 'vertical-transparent'],
             0,
         );
 
