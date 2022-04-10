@@ -25,9 +25,7 @@ All Fortify features enabled by default, and some other basic features to get yo
 
 ## Requirement
 
-Install the package on the new Laravel installation only, without additional packages like Jetstream or Laravel Ui.
-
-Laravel Fortify and FortifyUI will be installed automatically.
+Install the package on the new Laravel installation only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
 
 ## Installation
 
@@ -43,18 +41,31 @@ Next, you'll need to run the install command:
 php artisan fortify:tabler
 ```
 
+Then you can select which layout you want to use in your app. There are 3 layouts available:
+
+1. [Horizontal](https://preview.tabler.io/layout-horizontal.html)
+2. [Overlap](https://preview.tabler.io/layout-navbar-overlap.html)
+3. [Vertical](https://preview.tabler.io/layout-vertical.html)
+
+*You can view the demo for each layout from Tabler official demo.*
+
+## Changing Layout
+
+If you want to change the layout, just execute this command:
+
+```shell script
+php artisan fortify:layout
+```
+
 ## Documentation
 
-For the design documentation, please refer to the official websites.
+For the documentations, please refer to the official websites.
 
 - [Tabler](https://tabler.io)
 - [Bootstrap 5](https://getbootstrap.com/)
-
-## Dependencies
-
-1. [Fortify UI](https://github.com/zacksmash/fortify-ui)
-2. [Intervention Image](https://github.com/intervention/image)
-3. [Arcanedev Laravel Settings](https://github.com/ARCANEDEV/LaravelSettings/)
+- [Fortify UI](https://github.com/zacksmash/fortify-ui)
+- [Intervention Image](https://github.com/intervention/image)
+- [Arcanedev Laravel Settings](https://github.com/ARCANEDEV/LaravelSettings/)
 
 ## Screenshot
 
