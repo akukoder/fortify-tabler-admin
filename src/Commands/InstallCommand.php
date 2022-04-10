@@ -20,6 +20,12 @@ class InstallCommand extends Command
             $this->info('Bye...');
         }
 
+        $layout = $this->choice(
+            'What is your name?',
+            ['horizontal', 'overlap', 'vertical'],
+            0,
+        );
+
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
 
@@ -37,6 +43,7 @@ class InstallCommand extends Command
             $this->addViews();
             $this->updateUserModel();
             $this->updateSessionDriver();
+            $this->changeLayoutInViews($layout);
 
             $this->call('storage:link');
             $this->call('migrate');
@@ -47,6 +54,32 @@ class InstallCommand extends Command
         }
         catch (\Illuminate\Database\QueryException $e) {
             $this->error('Database not exists! Please create database for your application before proceeding.');
+        }
+    }
+
+    protected function changeLayoutInViews($layout)
+    {
+        $folders = [
+            resource_path('views'),
+            resource_path('views/profile'),
+            resource_path('views/users'),
+        ];
+
+        $tag = 'x-layouts.'.$layout;
+
+        foreach ($folders as $folder) {
+
+            if (config('app.debug')) {
+                $this->line($folder);
+            }
+
+            foreach (File::allFiles($folder) as $file) {
+                if (config('app.debug')) {
+                    $this->line($file);
+                }
+
+                $this->replaceInFile('[[LAYOUT]]', $tag, $file);
+            }
         }
     }
 
@@ -113,6 +146,7 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Auth.stub', app_path('View/Components/Layouts/Auth.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Horizontal.stub', app_path('View/Components/Layouts/Horizontal.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Overlap.stub', app_path('View/Components/Layouts/Overlap.php'));
+        File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Vertical.stub', app_path('View/Components/Layouts/Vertical.php'));
     }
 
     protected function publishAssets()
