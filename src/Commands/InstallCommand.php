@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
-    use ChangeLayoutTrait, SearchAndReplaceTrait;
+    use ChangeLayoutTrait, SearchAndReplaceTrait, IntroTrait;
 
     public $signature = 'fortify:tabler';
 
@@ -18,6 +18,8 @@ class InstallCommand extends Command
 
     public function handle()
     {
+        $this->showIntro();
+
         if (! $this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
             $this->info('Bye...');
         }

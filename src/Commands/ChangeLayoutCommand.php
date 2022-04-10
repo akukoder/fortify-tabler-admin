@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class ChangeLayoutCommand extends Command
 {
-    use ChangeLayoutTrait, SearchAndReplaceTrait;
+    use ChangeLayoutTrait, SearchAndReplaceTrait, IntroTrait;
 
     public $signature = 'fortify:layout';
 
@@ -14,10 +14,7 @@ class ChangeLayoutCommand extends Command
 
     public function handle()
     {
-        $this->line(str_repeat('-', 80));
-        $this->line('Fortify Tabler Admin');
-        $this->line(str_repeat('-', 80));
-        $this->line('');
+        $this->showIntro();
 
         $layout = $this->choice(
             'Which do layout you wish to use?',
