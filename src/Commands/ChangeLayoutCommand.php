@@ -24,7 +24,7 @@ class ChangeLayoutCommand extends Command
 
         $this->changeLayoutInViews($layout);
 
-        $this->call('optimize:clear');
+        $this->callSilent('optimize:clear');
 
         $this->line('');
         $this->comment('Layout changed!');

@@ -49,9 +49,9 @@ class InstallCommand extends Command
             $this->updateSessionDriver();
             $this->changeLayoutInViews($layout);
 
-            $this->call('storage:link');
-            $this->call('migrate');
-            $this->call('optimize:clear');
+            $this->callSilent('storage:link');
+            $this->callSilent('migrate');
+            $this->callSilent('optimize:clear');
 
             $this->line('');
             $this->comment('Fortify Tabler Admin installation completed!');
