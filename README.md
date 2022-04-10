@@ -25,6 +25,33 @@ All Fortify features enabled by default, and some other basic features to get yo
 10. Multiple dashboard layouts to choose
 11. Light or dark theme (per user setting)
 
+### Layout Type
+
+There are 3 layouts you can choose:
+
+1. Horizontal
+2. Overlap
+3. Vertical
+
+### Sidebar Position
+
+For vertical layout, your have option to set the sidebar position:
+
+1. Left
+2. Right
+
+### Styling
+
+For both horizontal and vertical, you can choose the styling:
+
+1. Light
+2. Dark
+3. Transparent (vertical layout only)
+
+### Sticky Navbar
+
+And if you choose horizontal, you have an option to set it to sticky.
+
 ## Requirement
 
 Install the package on the new **Laravel 8 and above** only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
@@ -42,13 +69,6 @@ Next, you'll need to run the install command:
 ```shell
 php artisan fortify:tabler
 ```
-
-Then you can select which layout you want to use in your app. There are 3 layouts available:
-
-1. [Horizontal](https://preview.tabler.io/layout-horizontal.html)
-2. [Overlap](https://preview.tabler.io/layout-navbar-overlap.html)
-3. [Vertical](https://preview.tabler.io/layout-vertical.html)
-3. [Vertical Transparent](https://preview.tabler.io/layout-vertical-transparent.html)
 
 *You can view the demo for each layout from Tabler official demo.*
 
