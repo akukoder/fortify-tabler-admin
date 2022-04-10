@@ -2,6 +2,7 @@
 
 namespace Akukoder\FortifyTablerAdmin;
 
+use Akukoder\FortifyTablerAdmin\Commands\ChangeLayoutCommand;
 use Akukoder\FortifyTablerAdmin\Commands\InstallCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -39,6 +40,7 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
             ], 'tabler-public');
 
             $this->commands([
+                ChangeLayoutCommand::class,
                 InstallCommand::class,
             ]);
         }

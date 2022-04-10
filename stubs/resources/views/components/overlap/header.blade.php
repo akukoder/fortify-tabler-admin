@@ -7,7 +7,6 @@
             <x-navbar-logo-white />
         </h1>
         <div class="navbar-nav flex-row order-md-last">
-            <x-nav-item-utils />
             <x-navbar-item-user />
         </div>
         <x-overlap.navbar-menu />

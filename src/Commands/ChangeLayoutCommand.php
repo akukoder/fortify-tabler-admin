@@ -1,0 +1,35 @@
+<?php
+
+namespace Akukoder\FortifyTablerAdmin\Commands;
+
+use Illuminate\Console\Command;
+
+class ChangeLayoutCommand extends Command
+{
+    use ChangeLayoutTrait, SearchAndReplaceTrait;
+
+    public $signature = 'fortify:layout';
+
+    public $description = 'Change layout in view files.';
+
+    public function handle()
+    {
+        $this->line(str_repeat('-', 80));
+        $this->line('Fortify Tabler Admin');
+        $this->line(str_repeat('-', 80));
+        $this->line('');
+
+        $layout = $this->choice(
+            'Which do layout you wish to use?',
+            ['horizontal', 'overlap', 'vertical'],
+            0,
+        );
+
+        $this->changeLayoutInViews($layout);
+
+        $this->call('optimize:clear');
+
+        $this->line('');
+        $this->comment('Layout changed!');
+    }
+}

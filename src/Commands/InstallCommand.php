@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
+    use ChangeLayoutTrait, SearchAndReplaceTrait;
+
     public $signature = 'fortify:tabler';
 
     public $description = 'Install Fortify Tabler Admin preset, with views, resources and some other features.';
@@ -21,7 +23,7 @@ class InstallCommand extends Command
         }
 
         $layout = $this->choice(
-            'What is your name?',
+            'Which layout do you wish to use?',
             ['horizontal', 'overlap', 'vertical'],
             0,
         );
@@ -57,31 +59,7 @@ class InstallCommand extends Command
         }
     }
 
-    protected function changeLayoutInViews($layout)
-    {
-        $folders = [
-            resource_path('views'),
-            resource_path('views/profile'),
-            resource_path('views/users'),
-        ];
 
-        $tag = 'x-layouts.'.$layout;
-
-        foreach ($folders as $folder) {
-
-            if (config('app.debug')) {
-                $this->line($folder);
-            }
-
-            foreach (File::allFiles($folder) as $file) {
-                if (config('app.debug')) {
-                    $this->line($file);
-                }
-
-                $this->replaceInFile('[[LAYOUT]]', $tag, $file);
-            }
-        }
-    }
 
     protected function addControllers()
     {
@@ -232,16 +210,5 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/app/Models/User.stub', app_path('Models/User.php'));
     }
 
-    /**
-     * Replace a given string within a given file.
-     *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $path
-     * @return void
-     */
-    protected function replaceInFile($search, $replace, $path)
-    {
-        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
-    }
+
 }
