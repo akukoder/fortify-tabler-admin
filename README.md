@@ -9,7 +9,7 @@
 
 **FortifyTablerAdmin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
 
-## Features
+# Features
 
 All Fortify features enabled by default, and some other basic features to get you started.
 
@@ -25,7 +25,7 @@ All Fortify features enabled by default, and some other basic features to get yo
 10. Multiple dashboard layouts to choose
 11. Light or dark theme (per user setting)
 
-### Layout Type
+## Layout Type
 
 There are 3 layouts you can choose:
 
@@ -33,14 +33,14 @@ There are 3 layouts you can choose:
 2. Overlap
 3. Vertical
 
-### Sidebar Position
+## Sidebar Position
 
 For vertical layout, your have option to set the sidebar position:
 
 1. Left
 2. Right
 
-### Styling
+## Styling
 
 For both horizontal and vertical, you can choose the styling:
 
@@ -48,15 +48,15 @@ For both horizontal and vertical, you can choose the styling:
 2. Dark
 3. Transparent (vertical layout only)
 
-### Sticky Navbar
+## Sticky Navbar
 
 And if you choose horizontal, you have an option to set it to sticky.
 
-## Requirement
+# Requirement
 
 Install the package on the new **Laravel 8 and above** only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
 
-## Installation
+# Installation
 
 To get started, you'll need to install **FortifyTablerAdmin** using composer.
 
@@ -70,17 +70,17 @@ Next, you'll need to run the install command:
 php artisan fortify:tabler
 ```
 
-*You can view the demo for each layout from Tabler official demo.*
-
 ## Changing Layout
 
-If you want to change the layout, just execute this command:
+If you want to change the layout, just run this command:
 
 ```shell
 php artisan fortify:layout
 ```
 
-## Documentation
+*You can view the demo for each layout from Tabler official demo.*
+
+# Documentation
 
 For the documentations, please refer to the official websites.
 
@@ -90,27 +90,23 @@ For the documentations, please refer to the official websites.
 - [Intervention Image](https://github.com/intervention/image)
 - [Arcanedev Laravel Settings](https://github.com/ARCANEDEV/LaravelSettings/)
 
-## Screenshot
+# Screenshot
 
 ![FortifyTablerAdmin Screenshot](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot.png)
 
-### Horizontal (Default)
 ![Horizontal Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-horizontal.png)
 
-### Overlap
 ![Overlap Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-overlap.png)
 
-### Vertical
 ![Vertical Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-vertical.png)
 
-### Vertical Transparent
 ![Vertical Transparent Layout](https://bitbucket.org/akukoder/fortify-tabler-admin/raw/8d605c5f8b26ca4b4690fd6e60434390a0f2a9f0/screenshot-vertical-transparent.png)
 
-## Credits
+# Credits
 - [Fortify UI](https://github.com/zacksmash/fortify-ui)
 - [Tabler](https://tabler.io)
 - [Proxeuse](https://github.com/Proxeuse/fortify-tabler)
 
-## License
+# License
 
 **FortifyTablerAdmin** is open-sourced software licensed under the [MIT license](LICENSE.md).
