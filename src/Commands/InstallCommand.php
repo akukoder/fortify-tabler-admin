@@ -4,6 +4,7 @@ namespace Akukoder\FortifyTablerAdmin\Commands;
 
 use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\QuestionTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
-    use ChangeLayoutTrait, SearchAndReplaceTrait, IntroTrait;
+    use ChangeLayoutTrait, QuestionTrait, SearchAndReplaceTrait, IntroTrait;
 
     public $signature = 'fortify:tabler';
 
@@ -25,13 +26,10 @@ class InstallCommand extends Command
 
         if (! $this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
             $this->info('Bye...');
+            exit;
         }
 
-        $layout = $this->choice(
-            'Which layout do you wish to use?',
-            ['horizontal', 'overlap', 'vertical', 'vertical-transparent'],
-            0,
-        );
+        list($layout, $position, $style, $sticky) = $this->askQuestions();
 
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
@@ -50,7 +48,7 @@ class InstallCommand extends Command
             $this->addViews();
             $this->updateUserModel();
             $this->updateSessionDriver();
-            $this->changeLayoutInViews($layout);
+            $this->changeLayoutInViews($layout, $position, $style, $sticky);
 
             $this->callSilent('storage:link');
             $this->callSilent('migrate');

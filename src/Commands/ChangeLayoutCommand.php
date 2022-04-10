@@ -4,12 +4,13 @@ namespace Akukoder\FortifyTablerAdmin\Commands;
 
 use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
+use Akukoder\FortifyTablerAdmin\Commands\Traits\QuestionTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
 use Illuminate\Console\Command;
 
 class ChangeLayoutCommand extends Command
 {
-    use ChangeLayoutTrait, SearchAndReplaceTrait, IntroTrait;
+    use ChangeLayoutTrait, QuestionTrait, SearchAndReplaceTrait, IntroTrait;
 
     public $signature = 'fortify:layout';
 
@@ -19,13 +20,9 @@ class ChangeLayoutCommand extends Command
     {
         $this->showIntro();
 
-        $layout = $this->choice(
-            'Which do layout you wish to use?',
-            ['horizontal', 'overlap', 'vertical', 'vertical-transparent'],
-            0,
-        );
+        list($layout, $position, $style, $sticky) = $this->askQuestions();
 
-        $this->changeLayoutInViews($layout);
+        $this->changeLayoutInViews($layout, $position, $style, $sticky);
 
         $this->callSilent('optimize:clear');
 
