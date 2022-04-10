@@ -153,19 +153,19 @@ trait ChangeLayoutTrait
                 $this->replaceInFile(
                     'navbar-light',
                     'navbar-dark',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
                     'navbar-transparent',
                     'navbar-dark',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
-                    '<x-navbar-logo />',
-                    '<x-navbar-logo-white />',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    '<x-navbar-logo light="0" />',
+                    '<x-navbar-logo light="1" />',
+                    resource_path('views/components/sidebar.blade.php')
                 );
                 break;
 
@@ -173,19 +173,19 @@ trait ChangeLayoutTrait
                 $this->replaceInFile(
                     'navbar-dark',
                     'navbar-light',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
                     'navbar-transparent',
                     'navbar-light',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
-                    '<x-navbar-logo-white />',
-                    '<x-navbar-logo />',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    '<x-navbar-logo light="1" />',
+                    '<x-navbar-logo light="0" />',
+                    resource_path('views/components/sidebar.blade.php')
                 );
                 break;
 
@@ -193,19 +193,19 @@ trait ChangeLayoutTrait
                 $this->replaceInFile(
                     'navbar-dark',
                     'navbar-transparent',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
                     'navbar-light',
                     'navbar-transparent',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
 
                 $this->replaceInFile(
-                    '<x-navbar-logo-white />',
-                    '<x-navbar-logo />',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    '<x-navbar-logo light="1" />',
+                    '<x-navbar-logo light="0" />',
+                    resource_path('views/components/sidebar.blade.php')
                 );
                 break;
         }
@@ -224,7 +224,7 @@ trait ChangeLayoutTrait
                 $this->replaceInFile(
                     'navbar-vertical navbar-right navbar-expand-lg',
                     'navbar-vertical navbar-expand-lg',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
                 break;
 
@@ -232,7 +232,7 @@ trait ChangeLayoutTrait
                 $this->replaceInFile(
                     'navbar-vertical navbar-expand-lg',
                     'navbar-vertical navbar-right navbar-expand-lg',
-                    resource_path('views/components/vertical/aside.blade.php')
+                    resource_path('views/components/sidebar.blade.php')
                 );
                 break;
         }

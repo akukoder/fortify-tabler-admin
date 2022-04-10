@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <x-navbar-logo-white />
+            <x-navbar-logo light="1" />
         </h1>
         <div class="navbar-nav px-2 flex-row flex-grow-0 bg-light text-dark rounded">
             <x-navbar-item-user class="my-2" position="start" />
