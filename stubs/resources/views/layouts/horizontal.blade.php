@@ -14,33 +14,14 @@
 
     <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
-            <x-header combine="0" sticky="0" overlap="0" />
+            <x-header combine="1" sticky="1" overlap="0" />
 
             <div class="page-wrapper">
-                @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))
-                    <div class="container-xl">
-                        <!-- Page title -->
-                        <div class="page-header d-print-none">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    @if (isset($page_pretitle))
-                                        <div class="page-pretitle">
-                                            {{ $page_pretitle ?? 'Overview' }}
-                                        </div>
-                                    @endif
-
-                                    @if (isset($page_title))
-                                        <h2 class="page-title">
-                                            {{ $page_title ?? 'Dashboard' }}
-                                        </h2>
-                                    @endif
-                                </div>
-
-                                {{ $page_title_actions ?? '' }}
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                <x-page-title
+                    :title="$title ?? ''"
+                    :pretitle="$pretitle ?? ''"
+                    :actions="$actions ?? ''"
+                    :subtitle="$subtitle ?? ''" />
 
                 <div class="page-body">
                     {{ $slot }}
@@ -50,6 +31,6 @@
             </div>
 
         </div>
-        <x-scripts :js="$js" />
+        <x-scripts :js="$js ?? ''" />
     </body>
 </html>

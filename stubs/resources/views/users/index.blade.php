@@ -1,136 +1,88 @@
 <[[LAYOUT]]>
-    <x-slot name="page_pretitle">
-        {{ __('users.header.page_pretitle') }}
-    </x-slot>
-
-    <x-slot name="page_title">
+    <x-slot name="title">
         {{ __('users.header.page_title') }}
     </x-slot>
 
-    <x-slot name="page_title_actions">
+    <x-slot name="subtitle">
+        <div class="text-muted mt-1">
+            There {{ $total > 1 ? 'are' : 'is' }} {{ $total }} users on the system
+        </div>
+    </x-slot>
+
+    <x-slot name="actions">
         <div class="col-auto ms-auto d-print-none">
-            <div class="btn-list">
+            <div class="d-flex">
+                <form action="{{ route('users.index') }}" method="get" class="me-2">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control d-inline-block w-9" value="{{ $search ?? '' }}" placeholder="Search...">
+                        <button type="submit" class="btn btn-outline-success">Search</button>
+                        <a href="{{ route('users.index') }}" class="btn btn-outline-secondary">Reset</a>
+                    </div>
+                </form>
+
                 <a href="{{ route('users.create') }}" class="btn btn-primary float-right">
-                    <i class="fa fa-plus-square"></i> {{ __('users.button.add_new') }}
+                    <x-icons.plus class="me-1" />
+                    {{ __('users.button.add_new') }}
                 </a>
             </div>
         </div>
     </x-slot>
 
     <div class="container-xl">
-        <div class="row">
-            <div class="col">
-                <x-status />
-                <x-errors />
-                <div class="card">
-                    <div class="card-body">
+        <div class="row row-cards">
+            <x-status />
+            <x-errors />
 
-                        <div class="row justify-content-around">
-                            <div class="col">
-                                <form action="{{ route('users.index') }}" method="get">
-                                    @csrf
+            @if ($users->count() < 1)
+                <div class="card-body">
+                    <x-no-result />
+                </div>
+            @else
+                @foreach ($users as $user)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            @if (auth()->user()->id === $user->id)
+                                <div class="card-status-top bg-danger"></div>
+                                <div class="ribbon bg-red">YOU</div>
+                            @endif
+                            <div class="card-body p-4 text-center">
+                                <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url('{{ $user->getAvatarUrl() }}')"></span>
+                                <h3 class="m-0 mb-1">
+                                    <a href="{{ route('users.edit', $user) }}">
+                                        {!! \App\Http\Helpers\StrHelper::highlight($search, $user->name) !!}
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="d-flex">
+                                @if (auth()->user()->id === $user->id)
+                                    <a href="{{ route('profile')  }}" class="card-btn text-danger">
+                                        <x-icons.user-check class="me-2" />
+                                        Profile
+                                    </a>
+                                @else
+                                    <a href="{{ route('users.edit', $user) }}" class="card-btn text-info">
+                                        <x-icons.edit class="me-2" />
+                                        Edit
+                                    </a>
 
-                                    <div class="form-group mb-0">
-                                        <div class="input-group">
-                                            <input
-                                                type="search"
-                                                name="search"
-                                                class="form-control"
-                                                placeholder="{{ __('Enter keyword...') }}"
-                                                value="{{ $search ?? '' }}">
-
-                                            <button
-                                                type="submit"
-                                                class="btn btn-outline-success">
-                                                {{ __('Search') }}
-                                            </button>
-                                            <a
-                                                href="{{ route('users.index') }}"
-                                                class="btn btn-outline-secondary">
-                                                {{ __('Reset') }}
-                                            </a>
-                                        </div>
-                                    </div><!-- /.form-group -->
-                                </form>
+                                    <a href="{{ route('users.delete', $user) }}" class="card-btn text-danger btn-delete-user">
+                                        <x-icons.trash class="me-2" />
+                                        Delete
+                                    </a>
+                                    <form action="{{ route('users.delete', $user) }}" method="post" id="user-delete-{{ $user->id }}" style="display: none">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                @endif
                             </div>
                         </div>
+                    </div>
+                @endforeach
 
-                    </div><!-- /.card-body -->
-
-                    @if ($users->count() < 1)
-                        <div class="card-body">
-                            <x-no-result />
-                        </div>
-                    @else
-                        <div class="card-table table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th style="width: 50px;"></th>
-                                    <th>{{ __('Name') }}</th>
-                                    <th>{{ __('Email') }}</th>
-                                    <th>{{ __('Username') }}</th>
-                                    <th style="width: 120px;"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <td>
-                                            <img src="{{ $user->getAvatarUrl() }}" class="img-fluid">
-                                        </td>
-                                        <td>
-                                            {!! \App\Http\Helpers\StrHelper::highlight($search, $user->name) !!}
-                                            @if (auth()->user()->id === $user->id)
-                                                <em class="small badge bg-danger ms-2">{{ __('Your Account') }}</em>
-                                            @endif
-                                        </td>
-                                        <td>{!! \App\Http\Helpers\StrHelper::highlight($search, $user->email) !!}</td>
-                                        <td>{!! \App\Http\Helpers\StrHelper::highlight($search, $user->username) !!}</td>
-                                        <td>
-                                            <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-outline-warning">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
-                                                    <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
-                                                </svg>
-                                            </a>
-
-                                            @if (auth()->user()->id !== $user->id)
-                                                <a href="{{ route('users.delete', $user) }}" data-id="{{ $user->id }}" class="btn btn-sm btn-outline-danger btn-delete-user">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <line x1="4" y1="7" x2="20" y2="7"></line>
-                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                                    </svg>
-                                                </a>
-
-                                                <form action="{{ route('users.delete', $user) }}" method="post" id="user-delete-{{ $user->id }}" style="display: none">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                                @if ($users->hasPages())
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="5">
-                                            {{ $users->links() }}
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                @endif
-                            </table>
-                        </div>
-                    @endif
-                </div><!-- /.card -->
-            </div>
+                <div class="d-flex mt-4 justify-content-center">
+                    {{ $users->links() }}
+                </div>
+            @endif
         </div>
     </div>
 

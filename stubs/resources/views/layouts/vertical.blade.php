@@ -17,30 +17,11 @@
             <x-sidebar />
 
             <div class="page-wrapper">
-                @if (isset($page_pretitle) OR isset($page_title) OR isset($page_title_actions))
-                    <div class="container-xl">
-                        <!-- Page title -->
-                        <div class="page-header d-print-none">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    @if (isset($page_pretitle))
-                                        <div class="page-pretitle">
-                                            {{ $page_pretitle ?? 'Overview' }}
-                                        </div>
-                                    @endif
-
-                                    @if (isset($page_title))
-                                        <h2 class="page-title">
-                                            {{ $page_title ?? 'Dashboard' }}
-                                        </h2>
-                                    @endif
-                                </div>
-
-                                {{ $page_title_actions ?? '' }}
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                <x-page-title
+                    :title="$title ?? ''"
+                    :pretitle="$pretitle ?? ''"
+                    :actions="$actions ?? ''"
+                    :subtitle="$subtitle ?? ''" />
 
                 <div class="page-body">
                     {{ $slot }}
@@ -50,6 +31,6 @@
             </div>
 
         </div>
-        <x-scripts :js="$js" />
+        <x-scripts :js="$js ?? ''" />
     </body>
 </html>
