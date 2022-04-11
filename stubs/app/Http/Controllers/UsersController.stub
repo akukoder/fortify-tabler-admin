@@ -33,14 +33,17 @@ class UsersController extends Controller
                     ->orWhere('username', 'like', '%'.$search.'%')
                     ->orWhere('email', 'like', '%'.$search.'%');
             });
-
         }
 
+        $total = $users->count();
+
         $users = $users->orderBy('name')
-            ->paginate(20)
+            ->paginate(12)
             ->withQueryString();
 
-        return view('users.index', compact('users', 'search'));
+        return view('users.index', compact(
+            'users', 'search', 'total',
+        ));
     }
 
     /**
