@@ -22,7 +22,7 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        $this->showIntro();
+        $this->showIntro('Install Package');
 
         if (! $this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
             $this->info('Bye...');

@@ -18,7 +18,7 @@ class ChangeLayoutCommand extends Command
 
     public function handle()
     {
-        $this->showIntro();
+        $this->showIntro('Change Layout');
 
         list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
 
