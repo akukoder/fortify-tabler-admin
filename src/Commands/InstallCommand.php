@@ -6,6 +6,7 @@ use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\QuestionTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
+use Akukoder\FortifyTablerAdmin\Config;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
@@ -30,6 +31,13 @@ class InstallCommand extends Command
         }
 
         list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
+
+        // Save data to config
+        (new Config)->set('layout', $layout);
+        (new Config)->set('position', $position);
+        (new Config)->set('combine', $combine);
+        (new Config)->set('style', $style);
+        (new Config)->set('sticky', $sticky);
 
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);

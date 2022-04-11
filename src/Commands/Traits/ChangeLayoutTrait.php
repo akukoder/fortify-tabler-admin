@@ -3,7 +3,6 @@
 namespace Akukoder\FortifyTablerAdmin\Commands\Traits;
 
 use Illuminate\Support\Facades\File;
-use function resource_path;
 
 trait ChangeLayoutTrait
 {
