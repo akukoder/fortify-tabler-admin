@@ -78,6 +78,28 @@ If you want to change the layout, just run this command:
 php artisan fortify:layout
 ```
 
+## Create Exmaple Pages
+
+You can generate example page using the command below:
+
+```shell
+php artisan fortify:view
+```
+
+Currently, there are 10 pages included:
+
+- activity
+- faq
+- gallery
+- invoice
+- license
+- music
+- pricing-cards
+- search-result
+- tasks
+- users
+
+
 *You can view the demo for each layout from Tabler official demo.*
 
 # Documentation
