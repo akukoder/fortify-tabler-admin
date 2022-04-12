@@ -198,7 +198,7 @@ class InstallCommand extends Command
     protected function updateSessionDriver()
     {
         // request information on session driver
-        if (!Schema::hasTable('sessions')){
+        if (!Schema::hasTable('sessions')) {
             $this->callSilent('session:table');
 
             $this->replaceInFile(

@@ -49,7 +49,7 @@ class CreateViewCommand extends Command
             null
         );
 
-        if (!is_null($folder) AND !File::isDirectory(resource_path('views/'.$folder))) {
+        if (!is_null($folder) and !File::isDirectory(resource_path('views/'.$folder))) {
             File::makeDirectory(resource_path('views/'.$folder));
             $filename = resource_path('views/'.$folder.'/'.$view.'.blade.php');
         } else {

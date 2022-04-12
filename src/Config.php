@@ -36,7 +36,7 @@ class Config
             $config[$key] = $value;
         } else {
             $config = array_merge($config, [
-                $key => $value
+                $key => $value,
             ]);
         }
 
