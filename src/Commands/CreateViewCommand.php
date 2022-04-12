@@ -2,9 +2,7 @@
 
 namespace Akukoder\FortifyTablerAdmin\Commands;
 
-use Akukoder\FortifyTablerAdmin\Commands\Traits\ChangeLayoutTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\IntroTrait;
-use Akukoder\FortifyTablerAdmin\Commands\Traits\QuestionTrait;
 use Akukoder\FortifyTablerAdmin\Commands\Traits\SearchAndReplaceTrait;
 use Akukoder\FortifyTablerAdmin\Config;
 use Illuminate\Console\Command;
@@ -12,7 +10,8 @@ use Illuminate\Support\Facades\File;
 
 class CreateViewCommand extends Command
 {
-    use SearchAndReplaceTrait, IntroTrait;
+    use IntroTrait;
+    use SearchAndReplaceTrait;
 
     public $signature = 'fortify:view';
 
@@ -25,7 +24,7 @@ class CreateViewCommand extends Command
         $this->showIntro();
 
         // Get which layout has been use currently from dashboard view
-        $layout = (new Config)->get('layout', 'horizontal');
+        $layout = (new Config())->get('layout', 'horizontal');
 
         $tag = 'x-layouts.'.$layout;
 
@@ -50,16 +49,15 @@ class CreateViewCommand extends Command
             null
         );
 
-        if (! is_null($folder) AND ! File::isDirectory(resource_path('views/'.$folder))) {
+        if (!is_null($folder) AND !File::isDirectory(resource_path('views/'.$folder))) {
             File::makeDirectory(resource_path('views/'.$folder));
             $filename = resource_path('views/'.$folder.'/'.$view.'.blade.php');
-        }
-        else {
+        } else {
             $filename = resource_path('views/'.$view.'.blade.php');
         }
 
         if (File::exists($filename)) {
-            if (! $this->confirm('File already exists, do you wish to overwrite?')) {
+            if (!$this->confirm('File already exists, do you wish to overwrite?')) {
                 $this->comment('Operation canceled!');
                 exit;
             }

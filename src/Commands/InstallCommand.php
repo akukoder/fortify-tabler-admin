@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
-    use ChangeLayoutTrait, QuestionTrait, SearchAndReplaceTrait, IntroTrait;
+    use ChangeLayoutTrait;
+    use IntroTrait;
+    use QuestionTrait;
+    use SearchAndReplaceTrait;
 
     public $signature = 'fortify:tabler';
 
@@ -25,7 +28,7 @@ class InstallCommand extends Command
     {
         $this->showIntro('Install Package');
 
-        if (! $this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
+        if (!$this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
             $this->info('Bye...');
             exit;
         }
@@ -33,11 +36,11 @@ class InstallCommand extends Command
         list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
 
         // Save data to config
-        (new Config)->set('layout', $layout);
-        (new Config)->set('position', $position);
-        (new Config)->set('combine', $combine);
-        (new Config)->set('style', $style);
-        (new Config)->set('sticky', $sticky);
+        (new Config())->set('layout', $layout);
+        (new Config())->set('position', $position);
+        (new Config())->set('combine', $combine);
+        (new Config())->set('style', $style);
+        (new Config())->set('sticky', $sticky);
 
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
@@ -64,15 +67,14 @@ class InstallCommand extends Command
 
             $this->line('');
             $this->comment('FortifyTablerAdmin installation completed!');
-        }
-        catch (\Illuminate\Database\QueryException $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             $this->error('Database not exists! Please create database for your application before proceeding.');
         }
     }
 
     protected function addControllers()
     {
-        if (! File::isDirectory(app_path('Http/Helpers'))) {
+        if (!File::isDirectory(app_path('Http/Helpers'))) {
             File::makeDirectory(app_path('Http/Helpers'));
         }
 
@@ -83,7 +85,7 @@ class InstallCommand extends Command
 
     protected function addEvents()
     {
-        if (! File::isDirectory(app_path('Listeners'))) {
+        if (!File::isDirectory(app_path('Listeners'))) {
             File::makeDirectory(app_path('Listeners'));
         }
 
@@ -92,7 +94,7 @@ class InstallCommand extends Command
 
     protected function addRules()
     {
-        if (! File::isDirectory(app_path('Rules'))) {
+        if (!File::isDirectory(app_path('Rules'))) {
             File::makeDirectory(app_path('Rules'));
         }
 
@@ -124,7 +126,7 @@ class InstallCommand extends Command
 
     protected function addViews()
     {
-        if (! File::isDirectory(app_path('View'))) {
+        if (!File::isDirectory(app_path('View'))) {
             File::makeDirectory(app_path('View'));
             File::makeDirectory(app_path('View/Components'));
             File::makeDirectory(app_path('View/Components/Layouts'));
@@ -160,7 +162,7 @@ class InstallCommand extends Command
         File::copy(self::STUB_DIR.'/resources/js/app.stub', resource_path('js/app.js'));
         File::copy(self::STUB_DIR.'/public/mix-manifest.stub', public_path('mix-manifest.json'));
 
-        if (! File::isDirectory(resource_path('sass'))) {
+        if (!File::isDirectory(resource_path('sass'))) {
             File::makeDirectory(resource_path('sass'));
         }
 
@@ -196,18 +198,18 @@ class InstallCommand extends Command
     protected function updateSessionDriver()
     {
         // request information on session driver
-        if (! Schema::hasTable('sessions')){
+        if (!Schema::hasTable('sessions')){
             $this->callSilent('session:table');
 
             $this->replaceInFile(
-                "SESSION_DRIVER=file".PHP_EOL,
-                "SESSION_DRIVER=database".PHP_EOL,
+                'SESSION_DRIVER=file'.PHP_EOL,
+                'SESSION_DRIVER=database'.PHP_EOL,
                 base_path('.env')
             );
 
             $this->replaceInFile(
-                "SESSION_DRIVER=file".PHP_EOL,
-                "SESSION_DRIVER=database".PHP_EOL,
+                'SESSION_DRIVER=file'.PHP_EOL,
+                'SESSION_DRIVER=database'.PHP_EOL,
                 base_path('.env.example')
             );
         }
@@ -218,6 +220,4 @@ class InstallCommand extends Command
         File::delete(app_path('Models/User.php'));
         File::copy(self::STUB_DIR.'/app/Models/User.stub', app_path('Models/User.php'));
     }
-
-
 }

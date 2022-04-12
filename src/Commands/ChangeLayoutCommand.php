@@ -11,7 +11,10 @@ use Illuminate\Console\Command;
 
 class ChangeLayoutCommand extends Command
 {
-    use ChangeLayoutTrait, QuestionTrait, SearchAndReplaceTrait, IntroTrait;
+    use ChangeLayoutTrait;
+    use IntroTrait;
+    use QuestionTrait;
+    use SearchAndReplaceTrait;
 
     public $signature = 'fortify:layout';
 
@@ -24,11 +27,11 @@ class ChangeLayoutCommand extends Command
         list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
 
         // Save data to config
-        (new Config)->set('layout', $layout);
-        (new Config)->set('position', $position);
-        (new Config)->set('combine', $combine);
-        (new Config)->set('style', $style);
-        (new Config)->set('sticky', $sticky);
+        (new Config())->set('layout', $layout);
+        (new Config())->set('position', $position);
+        (new Config())->set('combine', $combine);
+        (new Config())->set('style', $style);
+        (new Config())->set('sticky', $sticky);
 
         $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
 

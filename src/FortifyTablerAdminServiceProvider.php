@@ -35,8 +35,8 @@ class FortifyTablerAdminServiceProvider extends ServiceProvider
 
             // Update public files
             $this->publishes([
-                self::STUB_DIR.'/public/css' => base_path('public/css'),
-                self::STUB_DIR.'/public/js' => base_path('public/js'),
+                self::STUB_DIR.'/public/css'    => base_path('public/css'),
+                self::STUB_DIR.'/public/js'     => base_path('public/js'),
                 self::STUB_DIR.'/public/images' => base_path('public/images'),
                 self::STUB_DIR.'/public/static' => base_path('public/static'),
             ], 'tabler-public');

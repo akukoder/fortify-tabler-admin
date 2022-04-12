@@ -7,9 +7,10 @@ trait SearchAndReplaceTrait
     /**
      * Replace a given string within a given file.
      *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $path
+     * @param string $search
+     * @param string $replace
+     * @param string $path
+     *
      * @return void
      */
     protected function replaceInFile($search, $replace, $path)

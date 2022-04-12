@@ -32,10 +32,9 @@ class Config
     {
         $config = $this->load();
 
-        if (is_array($config) AND array_key_exists($key, $config)) {
+        if (is_array($config) and array_key_exists($key, $config)) {
             $config[$key] = $value;
-        }
-        else {
+        } else {
             $config = array_merge($config, [
                 $key => $value
             ]);

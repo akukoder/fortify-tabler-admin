@@ -5,6 +5,7 @@ namespace Akukoder\FortifyTablerAdmin\Commands\Traits;
 trait IntroTrait
 {
     protected $char = '*';
+
     protected function showIntro($commandName = null)
     {
         $this->line('');

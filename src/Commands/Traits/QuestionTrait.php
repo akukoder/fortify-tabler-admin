@@ -56,7 +56,7 @@ trait QuestionTrait
         }
 
         return [
-            $layout, $position, $combine, $style, $sticky
+            $layout, $position, $combine, $style, $sticky,
         ];
     }
 }

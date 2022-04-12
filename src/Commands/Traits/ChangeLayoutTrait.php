@@ -46,9 +46,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set header to combine with navbar
+     * Set header to combine with navbar.
      *
      * @param $combine
+     *
      * @return void
      */
     private function setHeaderCombine($combine)
@@ -73,9 +74,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set header styling
+     * Set header styling.
      *
      * @param $style
+     *
      * @return void
      */
     private function setHeaderStyle($style)
@@ -112,9 +114,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set header styling
+     * Set header styling.
      *
      * @param $sticky
+     *
      * @return void
      */
     private function setHeaderSticky($sticky)
@@ -140,9 +143,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set sidebar styling
+     * Set sidebar styling.
      *
      * @param $style
+     *
      * @return void
      */
     private function setSidebarStyle($style)
@@ -211,9 +215,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set sidebar position
+     * Set sidebar position.
      *
      * @param $position
+     *
      * @return void
      */
     private function setSidebarPosition($position)
