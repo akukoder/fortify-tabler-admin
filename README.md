@@ -3,11 +3,63 @@
 # Introduction
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
-[![Last Commit](https://img.shields.io/bitbucket/last-commit/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![Last Commit](https://img.shields.io/github/last-commit/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 [![Total Downloads](https://img.shields.io/packagist/dt/akukoder/fortify-tabler-admin.svg?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
 [![License](https://img.shields.io/packagist/l/akukoder/fortify-tabler-admin?style=flat-square)](https://packagist.org/packages/akukoder/fortify-tabler-admin)
+[![StyleCI](https://github.styleci.io/repos/479666784/shield?branch=master)](https://github.styleci.io/repos/479666784?branch=master)
 
-**FortifyTablerAdmin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Theme](https://tabler.io).
+**FortifyTablerAdmin** is a Laravel Fortify UI preset, built with an open source [Tabler Admin Template](https://tabler.io).
+
+# Requirement
+
+Install the package on the new **Laravel 8 and above** only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
+
+# Installation
+
+To get started, you'll need to install **FortifyTablerAdmin** using composer.
+
+```shell
+composer require akukoder/fortify-tabler-admin --dev
+```
+
+Next, you'll need to run the install command:
+
+```shell
+php artisan fortify:tabler
+```
+
+## Changing Layout
+
+If you want to change the layout, just run this command:
+
+```shell
+php artisan fortify:layout
+```
+
+## Create Example Pages
+
+You can generate example page using the command below:
+
+```shell
+php artisan fortify:view
+```
+
+Currently, there are 10 pages included:
+
+- activity
+- faq
+- gallery
+- invoice
+- license
+- music
+- pricing-cards
+- search-result
+- tasks
+- users
+
+
+*You can view the demo for each layout from [Tabler official demo](https://preview.tabler.io/).*
+
 
 # Features
 
@@ -52,55 +104,6 @@ For both horizontal and vertical, you can choose the styling:
 
 And if you choose horizontal, you have an option to set it to sticky.
 
-# Requirement
-
-Install the package on the new **Laravel 8 and above** only, without additional packages like Jetstream or Laravel Ui. Laravel Fortify and FortifyUI will be installed automatically.
-
-# Installation
-
-To get started, you'll need to install **FortifyTablerAdmin** using composer.
-
-```shell
-composer require akukoder/fortify-tabler-admin --dev
-```
-
-Next, you'll need to run the install command:
-
-```shell
-php artisan fortify:tabler
-```
-
-## Changing Layout
-
-If you want to change the layout, just run this command:
-
-```shell
-php artisan fortify:layout
-```
-
-## Create Exmaple Pages
-
-You can generate example page using the command below:
-
-```shell
-php artisan fortify:view
-```
-
-Currently, there are 10 pages included:
-
-- activity
-- faq
-- gallery
-- invoice
-- license
-- music
-- pricing-cards
-- search-result
-- tasks
-- users
-
-
-*You can view the demo for each layout from Tabler official demo.*
 
 # Documentation
 

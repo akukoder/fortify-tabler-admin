@@ -152,9 +152,17 @@ class InstallCommand extends Command
         File::delete(base_path('package.json'));
         File::delete(base_path('package-lock.json'));
 
-        File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
-        File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', resource_path('lang/en/profile.php'));
-        File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', resource_path('lang/en/users.php'));
+        // Laravel 8 and below
+        if (File::isDirectory(resource_path('lang'))) {
+            File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
+            File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', resource_path('lang/en/profile.php'));
+            File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', resource_path('lang/en/users.php'));
+        }
+        else {
+            File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', base_path('lang/en/auth.php'));
+            File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', base_path('lang/en/profile.php'));
+            File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', base_path('lang/en/users.php'));
+        }
 
         File::copyDirectory(self::STUB_DIR.'/resources/tabler', resource_path('tabler'));
         File::copy(self::STUB_DIR.'/webpack.mix.stub', base_path('webpack.mix.js'));
