@@ -157,8 +157,7 @@ class InstallCommand extends Command
             File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', resource_path('lang/en/auth.php'));
             File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', resource_path('lang/en/profile.php'));
             File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', resource_path('lang/en/users.php'));
-        }
-        else {
+        } else {
             File::copy(self::STUB_DIR.'/resources/lang/en/auth.stub', base_path('lang/en/auth.php'));
             File::copy(self::STUB_DIR.'/resources/lang/en/profile.stub', base_path('lang/en/profile.php'));
             File::copy(self::STUB_DIR.'/resources/lang/en/users.stub', base_path('lang/en/users.php'));
