@@ -18,7 +18,7 @@ class InstallCommand extends Command
     use QuestionTrait;
     use SearchAndReplaceTrait;
 
-    public $signature = 'fortify:tabler';
+    public $signature = 'fortify:tabler {--skip-migration}';
 
     public $description = 'Install FortifyTablerAdmin preset, with views, resources and some other features.';
 
@@ -27,6 +27,8 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->showIntro('Install Package');
+
+        $skipMigation = $this->option('skip-migration');
 
         if (!$this->confirm('This package will replace some of your laravel files. Do you wish to continue?', true)) {
             $this->info('Bye...');
@@ -62,8 +64,17 @@ class InstallCommand extends Command
             $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
 
             $this->callSilent('storage:link');
-            $this->callSilent('migrate');
+
+            if ($skipMigation !== true) {
+                $this->callSilent('migrate');
+            }
+
             $this->callSilent('optimize:clear');
+
+            if ($skipMigation === true) {
+                $this->line('');
+                $this->line('<error> NOTE </error> You choose to skip database migration. Please run the migration command manually to update your database.');
+            }
 
             $this->line('');
             $this->comment('FortifyTablerAdmin installation completed!');
@@ -206,6 +217,18 @@ class InstallCommand extends Command
     {
         // request information on session driver
         if (!Schema::hasTable('sessions')) {
+
+            // Get all files inside migration folder
+            $files = File::allFiles(database_path('migrations'));
+
+            foreach ($files as $file) {
+                // Check if migration file is exists
+                if (strstr($file, 'create_sessions_table.php')) {
+                    File::delete($file);
+                }
+            }
+
+            // Re-create migration file
             $this->callSilent('session:table');
 
             $this->replaceInFile(

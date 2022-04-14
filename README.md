@@ -28,6 +28,12 @@ Next, you'll need to run the install command:
 php artisan fortify:tabler
 ```
 
+The package will run database migration automatically. If you want to skip it:
+
+```shell
+php artisan fortify:tabler --skip-migration
+```
+
 ## Changing Layout
 
 If you want to change the layout, just run this command:
