@@ -10,9 +10,9 @@ trait ChangeLayoutTrait
     {
         $folders = [
             resource_path('views'),
-            resource_path('views/profile'),
-            resource_path('views/users'),
         ];
+
+        $folders = array_merge($folders, File::directories(resource_path('views')));
 
         $tagToFind = [
             '[[LAYOUT]]',
