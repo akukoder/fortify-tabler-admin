@@ -110,6 +110,9 @@ For both horizontal and vertical, you can choose the styling:
 
 And if you choose horizontal, you have an option to set it to sticky.
 
+# Known Issue
+
+1. [Not working with Laravel Voyager](https://github.com/akukoder/fortify-tabler-admin/issues/3#issuecomment-1099368495).
 
 # Documentation
 
