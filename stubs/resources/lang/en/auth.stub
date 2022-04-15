@@ -34,6 +34,7 @@ return [
     'placeholder' => [
         'name' => 'Enter your full name',
         'email' => 'Enter your email',
+        'username' => 'Enter your username',
         'email_or_username' => 'Username or Email',
         'password' => 'Enter your password',
         'password_confirmation' => 'Confirm your password',

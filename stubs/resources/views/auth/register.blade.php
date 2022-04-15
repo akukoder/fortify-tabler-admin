@@ -9,15 +9,20 @@
                     class="form-control" placeholder="{{ __('auth.placeholder.name') }}" tabindex="1">
             </div>
             <div class="mb-3">
+                <label class="form-label">{{ __('auth.fields.username') }}</label>
+                <input type="text" name="username" value="{{ old('username') }}" required class="form-control"
+                       placeholder="{{ __('auth.placeholder.username') }}" tabindex="2">
+            </div>
+            <div class="mb-3">
                 <label class="form-label">{{ __('auth.fields.email') }}</label>
                 <input type="email" name="email" value="{{ old('email') }}" required class="form-control"
-                    placeholder="{{ __('auth.placeholder.email') }}" tabindex="2">
+                    placeholder="{{ __('auth.placeholder.email') }}" tabindex="3">
             </div>
             <div class="mb-3">
                 <label class="form-label">{{ __('auth.fields.password') }}</label>
                 <div class="input-group input-group-flat">
                     <input type="password" name="password" required autocomplete="new-password" class="form-control"
-                        placeholder="{{ __('auth.placeholder.password') }}" tabindex="3">
+                        placeholder="{{ __('auth.placeholder.password') }}" tabindex="4">
                     <span class="input-group-text">
                         <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip"><svg
                                 xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -35,12 +40,12 @@
             <div class="mb-3">
                 <label class="form-label">{{ __('auth.fields.password_confirmation') }}</label>
                 <input type="password" name="password_confirmation" required autocomplete="new-password"
-                    class="form-control" placeholder="{{ __('auth.placeholder.password_confirmation') }}" tabindex="4">
+                    class="form-control" placeholder="{{ __('auth.placeholder.password_confirmation') }}" tabindex="5">
             </div>
 
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary btn-block"
-                    tabindex="5">{{ __('auth.register_button') }}</button>
+                    tabindex="6">{{ __('auth.register_button') }}</button>
             </div>
 
         </div>
