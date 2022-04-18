@@ -11,7 +11,7 @@
         </div>
     </a>
     <div class="dropdown-menu dropdown-menu-{{ $position ?? 'end' }} dropdown-menu-arrow">
-        <a href="{{ url('profile') }}" class="dropdown-item">
+        <a href="{{ route('profile') }}" class="dropdown-item">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check pe-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <circle cx="9" cy="7" r="4"></circle>
@@ -21,14 +21,14 @@
             Profile &amp; Account
         </a>
         <div class="dropdown-divider"></div>
-        <a href="{{ url('/profile/theme') }}?theme=dark" class="dropdown-item hide-theme-dark" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Enable dark mode">
+        <a href="{{ route('profile.theme') }}?theme=dark" class="dropdown-item hide-theme-dark" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Enable dark mode">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon pe-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
             </svg>
             Enable Dark Mode
         </a>
-        <a href="{{ url('/profile/theme') }}?theme=light" class="dropdown-item hide-theme-light" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Enable light mode">
+        <a href="{{ route('profile.theme') }}?theme=light" class="dropdown-item hide-theme-light" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Enable light mode">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down pe-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <circle cx="12" cy="12" r="3"></circle>

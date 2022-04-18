@@ -18,7 +18,7 @@
                 <h2>{{ __('profile.header.2fa_not_enabled') }}</h2>
                 <p>{{ __('profile.description.2fa_not_enabled') }}</p>
             </div>
-            <form method="POST" action="{{ url('user/two-factor-authentication') }}" class="text-center">
+            <form method="POST" action="{{ route('two-factor.enable') }}" class="text-center">
                 @csrf
 
                 <button type="submit" class="btn btn-success mb-3">
@@ -43,7 +43,7 @@
             </form>
 
             {{-- Disable 2FA --}}
-            <form method="POST" action="{{ url('user/two-factor-authentication') }}" id="disable2fa">
+            <form method="POST" action="{{ route('two-factor.disable') }}" id="disable2fa">
                 @csrf
                 @method('DELETE')
             </form>
