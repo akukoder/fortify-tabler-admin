@@ -10,6 +10,7 @@ trait QuestionTrait
         $combine = 0;
         $style = 0;
         $sticky = 0;
+        $vheader = 0;
 
         $layout = $this->choice(
             'Choose layout',
@@ -29,6 +30,12 @@ trait QuestionTrait
                     'Choose sidebar styling',
                     ['light', 'dark', 'transparent'],
                     0,
+                );
+
+                $vheader = $this->choice(
+                    'Do you want to add header as well?',
+                    ['no', 'yes'],
+                    1,
                 );
                 break;
 
@@ -56,7 +63,7 @@ trait QuestionTrait
         }
 
         return [
-            $layout, $position, $combine, $style, $sticky,
+            $layout, $position, $combine, $style, $sticky, $vheader,
         ];
     }
 }

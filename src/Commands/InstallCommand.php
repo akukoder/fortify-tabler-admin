@@ -35,7 +35,7 @@ class InstallCommand extends Command
             exit;
         }
 
-        list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
+        list($layout, $position, $combine, $style, $sticky, $vheader) = $this->askQuestions();
 
         // Save data to config
         (new Config())->set('layout', $layout);
@@ -43,6 +43,7 @@ class InstallCommand extends Command
         (new Config())->set('combine', $combine);
         (new Config())->set('style', $style);
         (new Config())->set('sticky', $sticky);
+        (new Config())->set('vheader', $vheader);
 
         try {
             $this->callSilent('fortify:ui', ['--skip-provider' => true]);
@@ -61,7 +62,7 @@ class InstallCommand extends Command
             $this->addViews();
             $this->updateUserModel();
             $this->updateSessionDriver();
-            $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
+            $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky, $vheader);
 
             $this->callSilent('storage:link');
 

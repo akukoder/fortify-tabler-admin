@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\File;
 
 trait ChangeLayoutTrait
 {
-    protected function changeLayoutInViews($layout, $position = null, $combine = null, $style = null, $sticky = null)
+    protected function changeLayoutInViews($layout, $position = null, $combine = null, $style = null, $sticky = null, $header = null)
     {
         $folders = [
             resource_path('views'),
@@ -35,6 +35,7 @@ trait ChangeLayoutTrait
             case 'vertical':
                 $this->setSidebarPosition($position);
                 $this->setSidebarStyle($style);
+                $this->setVerticalHeader($header);
                 break;
 
             case 'horizontal':
@@ -239,6 +240,29 @@ trait ChangeLayoutTrait
                     resource_path('views/components/sidebar.blade.php')
                 );
                 break;
+        }
+    }
+
+    /**
+     * Set header to vertical layout
+     *
+     * @param string $header
+     * @return void
+     */
+    private function setVerticalHeader($header)
+    {
+        if ($header === 'yes') {
+            $this->replaceInFile(
+                '<!-- x-header combine="0" sticky="0" overlap="0" vheader="1" / -->',
+                '<x-header combine="0" sticky="0" overlap="0" vheader="1" />',
+                resource_path('views/layouts/vertical.blade.php')
+            );
+        } else {
+            $this->replaceInFile(
+                '<x-header combine="0" sticky="0" overlap="0" vheader="1" />',
+                '<!-- x-header combine="0" sticky="0" overlap="0" vheader="1" / -->',
+                resource_path('views/layouts/vertical.blade.php')
+            );
         }
     }
 }

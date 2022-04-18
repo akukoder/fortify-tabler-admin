@@ -24,7 +24,7 @@ class ChangeLayoutCommand extends Command
     {
         $this->showIntro('Change Layout');
 
-        list($layout, $position, $combine, $style, $sticky) = $this->askQuestions();
+        list($layout, $position, $combine, $style, $sticky, $vheader) = $this->askQuestions();
 
         // Save data to config
         (new Config())->set('layout', $layout);
@@ -32,8 +32,9 @@ class ChangeLayoutCommand extends Command
         (new Config())->set('combine', $combine);
         (new Config())->set('style', $style);
         (new Config())->set('sticky', $sticky);
+        (new Config())->set('vheader', $vheader);
 
-        $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky);
+        $this->changeLayoutInViews($layout, $position, $combine, $style, $sticky, $vheader);
 
         $this->callSilent('optimize:clear');
 

@@ -15,6 +15,7 @@
     <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
         <div class="page">
             <x-sidebar />
+            <x-header combine="0" sticky="0" overlap="0" vheader="1" />
 
             <div class="page-wrapper">
                 <x-page-title

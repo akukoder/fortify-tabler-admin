@@ -16,7 +16,7 @@
         <div class="page">
 
             <div class="page-wrapper">
-                <x-header combine="0" sticky="0" overlap="1" />
+                <x-header combine="0" sticky="0" overlap="1" vheader="0" />
 
                 <x-page-title
                     :title="$title ?? ''"
