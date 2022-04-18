@@ -10,7 +10,7 @@
             {{--<div class="mt-1 small text-muted">UI Designer</div>--}}
         </div>
     </a>
-    <div class="dropdown-menu dropdown-menu-{{ $position ?? 'end' }} dropdown-menu-arrow">
+    <div class="dropdown-menu dropdown-menu-{{ $position ?? 'end' }} dropdown-menu-arrow {{ auth()->user()->settings('user_theme', 'theme-dark') === 'theme-dark' ? 'text-light' : '' }}">
         <a href="{{ route('profile') }}" class="dropdown-item">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check pe-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
