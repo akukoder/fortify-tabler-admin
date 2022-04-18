@@ -24,6 +24,6 @@
             </div>
         </div>
 
-        <x-scripts />
+        <x-scripts :js="$js ?? ''" />
     </body>
 </html>
