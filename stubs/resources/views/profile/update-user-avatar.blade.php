@@ -12,12 +12,12 @@
         @endif
 
         <div class="row mb-3">
-            <div class="col-2 text-center m-auto">
+            <div class="col-md-2 text-center m-auto">
                 <span
                     style="--tblr-avatar-size: 8rem; background-image: url('{{ auth()->user()->getAvatarUrl() }}')"
                     class="avatar avatar-xl"></span>
             </div>
-            <div class="col-10">
+            <div class="col-md-10">
                 <form enctype="multipart/form-data" action="{{ route('profile.avatar') }}"
                       method="POST">
                     @csrf
@@ -31,7 +31,7 @@
                     </div>
                     <input type="submit" class="btn btn-primary">
                     <button class="btn btn-danger"
-                        onclick="event.preventDefault(); document.getElementById('deleteAvatarForm').submit()">Delete Profile
+                            onclick="event.preventDefault(); document.getElementById('deleteAvatarForm').submit()">Delete Profile
                         Picture</button>
 
                 </form>
