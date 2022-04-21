@@ -244,9 +244,10 @@ trait ChangeLayoutTrait
     }
 
     /**
-     * Set header to vertical layout
+     * Set header to vertical layout.
      *
      * @param string $header
+     *
      * @return void
      */
     private function setVerticalHeader($header)
