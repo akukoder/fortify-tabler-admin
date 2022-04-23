@@ -12,11 +12,11 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
     </head>
 
-    <body class="antialiased d-flex flex-column {{ auth()->user()->settings('user_theme', 'theme-dark') }}">
+    <body class="antialiased d-flex flex-column {{ $theme }}">
         <div class="page">
 
             <div class="page-wrapper">
-                <x-header combine="0" sticky="0" overlap="1" vheader="0" />
+                <x-header combine="0" sticky="0" overlap="1" />
 
                 <x-page-title
                     :title="$title ?? ''"

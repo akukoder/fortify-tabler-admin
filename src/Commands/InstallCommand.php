@@ -138,16 +138,22 @@ class InstallCommand extends Command
 
     protected function addViews()
     {
-        if (!File::isDirectory(app_path('View'))) {
-            File::makeDirectory(app_path('View'));
-            File::makeDirectory(app_path('View/Components'));
-            File::makeDirectory(app_path('View/Components/Layouts'));
+        $dirs = [
+            app_path('View'),
+            app_path('View/Components'),
+            app_path('View/Components/Layouts'),
+            app_path('View/Components/Traits'),
+        ];
+
+        foreach ($dirs as $dir) {
+            $this->isDirectoryOrCreate($dir);
         }
 
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Auth.stub', app_path('View/Components/Layouts/Auth.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Horizontal.stub', app_path('View/Components/Layouts/Horizontal.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Overlap.stub', app_path('View/Components/Layouts/Overlap.php'));
         File::copy(self::STUB_DIR.'/app/View/Components/Layouts/Vertical.stub', app_path('View/Components/Layouts/Vertical.php'));
+        File::copy(self::STUB_DIR.'/app/View/Components/Traits/UserTheme.stub', app_path('View/Components/Traits/UserTheme.php'));
     }
 
     protected function publishAssets()
@@ -250,5 +256,12 @@ class InstallCommand extends Command
     {
         File::delete(app_path('Models/User.php'));
         File::copy(self::STUB_DIR.'/app/Models/User.stub', app_path('Models/User.php'));
+    }
+
+    protected function isDirectoryOrCreate($dir)
+    {
+        if (!File::isDirectory($dir)) {
+            File::makeDirectory($dir);
+        }
     }
 }

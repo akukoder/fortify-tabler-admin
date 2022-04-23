@@ -2,10 +2,13 @@
 
 namespace App\View\Components\Layouts;
 
+use App\View\Components\Traits\UserTheme;
 use Illuminate\View\Component;
 
 class Vertical extends Component
 {
+    use UserTheme;
+
     /**
      * Create a new component instance.
      *
@@ -23,6 +26,8 @@ class Vertical extends Component
      */
     public function render()
     {
-        return view('layouts.vertical');
+        return view('layouts.vertical', [
+            'theme' => $this->getUserTheme(),
+        ]);
     }
 }
