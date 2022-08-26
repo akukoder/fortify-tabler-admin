@@ -18,9 +18,16 @@ Install the package on the new **Laravel 8 and above** only, without additional 
 
 To get started, you'll need to install **FortifyTablerAdmin** using composer.
 
+## Laravel 9
 ```shell
 composer require akukoder/fortify-tabler-admin
 ```
+
+## Laravel 8 and below
+```shell
+composer require akukoder/fortify-tabler-admin:^1.0
+```
+
 
 Next, you'll need to run the install command:
 
